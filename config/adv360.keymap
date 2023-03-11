@@ -18,6 +18,9 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/backlight.h>
 
+#define DEFAULT 0
+#define SECONDARY 4
+
 / {
   behaviors {
     #include "macros.dtsi"
@@ -36,14 +39,13 @@
     keymap {
         compatible = "zmk,keymap";
 
-
         default_layer {
             bindings = <
- &kp EQUAL     &kp N1    &kp N2    &kp N3     &kp N4  &kp N5              &tog 1                                                                        &mo 3  &kp N6  &kp N7     &kp N8    &kp N9    &kp N0  &kp MINUS
-   &kp TAB      &kp Q     &kp W     &kp E      &kp R   &kp T               &none                                                                        &none   &kp Y   &kp U      &kp I     &kp O     &kp P   &kp BSLH
-   &kp ESC      &kp A     &kp S     &kp D      &kp F   &kp G               &none         &kp LCTRL  &kp LALT   &none   &none   &kp LGUI  &kp RCTRL      &none   &kp H   &kp J      &kp K     &kp L  &kp SEMI    &kp SQT
- &kp LSHFT      &kp Z     &kp X     &kp C      &kp V   &kp B               &none             &none  &kp HOME   &none   &none  &kp PG_UP      &none      &none   &kp N   &kp M  &kp COMMA   &kp DOT  &kp FSLH  &kp RSHFT
-     &mo 2  &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT                    &kp BSPC  &kp LEFT_COMMAND   &kp END                  &kp PG_DN  &kp ENTER  &kp SPACE          &kp UP   &kp DOWN  &kp LBKT  &kp RBKT      &mo 2
+   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog 1                                                                                                     &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
+   &kp TAB            &kp Q           &kp W          &kp E            &kp R               &kp T               &none                                                                                                      &none           &kp Y         &kp U                   &kp I           &kp O          &kp P             &kp BSLH
+   &kp ESC            &hm LCTRL A     &hm LALT S     &hm LSHFT D      &hm LEFT_COMMAND F  &kp G               &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &kp H         &hm RIGHT_COMMAND J     &hm RSHFT K     &hm RALT L     &hm RCTRL SEMI    &kp SQT
+   &kp LSHFT          &kp Z           &kp X          &kp C            &kp V               &kp B               &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
+   &mo 2              &kp GRAVE       &kp CAPS       &kp LEFT         &kp RIGHT           &lt SECONDARY BSPC  &hm LSHFT LANGUAGE_1           &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                     &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
@@ -74,6 +76,16 @@
   &none         &none         &none         &none         &none         &none            &rgb_ug RGB_MEFS_CMD 5  &bt BT_CLR   &none   &none   &none  &bt BT_CLR  &bt BT_CLR  &rgb_ug RGB_MEFS_CMD 5         &none         &none         &none         &none         &none   &none
   &none         &none         &none         &none         &none         &none                             &none       &none   &none   &none   &none       &none       &none                   &none         &none         &none         &none         &none         &none   &none
   &none         &none         &none    &bl BL_INC    &bl BL_DEC                                 &rgb_ug RGB_TOG  &bl BL_TOG   &none                       &none  &bl BL_TOG         &rgb_ug RGB_TOG                  &bl BL_INC    &bl BL_DEC         &none         &none   &none
+            >;
+        };
+
+        secondary_layer {
+            bindings = <
+   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog 1                                                                                                     &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
+   &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp T               &none                                                                                                      &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
+   &kp ESC            &hm LCTRL A     &hm LALT N4    &hm LSHFT N5     &hm LEFT_COMMAND N6 &kp G               &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
+   &kp LSHFT          &kp Z           &kp N1         &kp N2           &kp N3              &kp B               &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
+   &mo 2              &kp GRAVE       &kp CAPS       &kp N0           &kp RIGHT           &kp BSPC            &kp LANGUAGE_1                 &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                     &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
