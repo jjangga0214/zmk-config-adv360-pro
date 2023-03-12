@@ -50,17 +50,17 @@
         };
     };
 
-    d_tap_dance: d_tap_dance {
+    l_mid_tap_dance: l_mid_tap_dance {
         compatible = "zmk,behavior-tap-dance";
-        label = "D_TAP_DANCE";
+        label = "L_MID_TAP_DANCE";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
         bindings = <&hm LSHFT D>, <&cmd_tab>;
     };
 
-    f_tap_dance: f_tap_dance {
+    l_ind_tap_dance: l_ind_tap_dance {
         compatible = "zmk,behavior-tap-dance";
-        label = "F_TAP_DANCE";
+        label = "L_IND_TAP_DANCE";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
         bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
@@ -73,9 +73,9 @@
             bindings = <
    &kp EQUAL          &kp N1            &kp N2         &kp N3                     &kp N4                         &kp N5                 &tog 1                                                                                                     &mo 3           &kp N6        &kp N7                  &kp N8                 &kp N9         &kp N0            &kp MINUS
    &kp TAB            &kp Q             &kp W          &kp E                      &kp R                          &kp T                  &none                                                                                                      &none           &kp Y         &kp U                   &kp I                  &kp O          &kp P             &kp BSLH
-   &kp ESC            &hm LCTRL A       &hm LALT S     &d_tap_dance               &f_tap_dance                   &kp G                  &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &kp H         &hm LEFT_COMMAND J      &hm RSHFT K            &hm RALT L     &hm RCTRL SEMI    &kp SQT
+   &kp ESC            &hm LCTRL A       &hm LALT S     &l_mid_tap_dance           &l_ind_tap_dance               &kp G                  &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &kp H         &hm LEFT_COMMAND J      &hm RSHFT K            &hm RALT L     &hm RCTRL SEMI    &kp SQT
    &kp LSHFT          &hm LG(LS(Z)) Z   &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                    &kp B                  &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &kp DOT        &kp FSLH          &kp RSHFT
-   &mo 2              &kp GRAVE         &kp CAPS       &kp TAB                    &kp ESC                        &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                     &kp UP                  &kp DOWN               &kp LBKT       &kp RBKT          &mo 2
+   &mo 2              &kp GRAVE         &kp CAPS       &kp TAB                    &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                     &kp UP                  &kp DOWN               &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
