@@ -50,20 +50,42 @@
         };
     };
 
-    l_mid_tap_dance: l_mid_tap_dance {
+    td_l_mid: td_l_mid {
         compatible = "zmk,behavior-tap-dance";
-        label = "L_MID_TAP_DANCE";
+        label = "TD_L_MID";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
         bindings = <&hm LSHFT D>, <&cmd_tab>;
     };
 
-    l_ind_tap_dance: l_ind_tap_dance {
+    td_l_ind: td_l_ind {
         compatible = "zmk,behavior-tap-dance";
-        label = "L_IND_TAP_DANCE";
+        label = "TD_L_INDTD";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
         bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
+    };
+
+    td_r_ind: td_r_ind {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_R_IND";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_quote {
+            timeout-ms = <50>;
+            key-positions = <32 23>;
+            bindings = <&kp SQT>;
+        };
+        combo_doublequote {
+            timeout-ms = <50>;
+            key-positions = <31 23>;
+            bindings = <&kp LS(SQT)>;
+        };
     };
 
     keymap {
@@ -71,9 +93,14 @@
 
         default_layer {
             bindings = <
+
+/*
+
+
+*/
    &hm LS(EQUAL) EQUAL  &hm LS(N1) N1     &hm LS(N2) N2  &hm LS(N3) N3              &hm LS(N4) N4                  &hm LS(N5) N5          &tog 1                                                                                                     &mo 3           &hm LS(N6) N6       &hm LS(N7) N7           &hm LS(N8) N8          &hm LS(N9) N9     &hm LS(N0) N0       6&hm LS(MINUS) MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                    &hm LS(T) T            &none                                                                                                      &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
-   &kp ESC              &hm LCTRL A       &hm LALT S     &l_mid_tap_dance           &l_ind_tap_dance               &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &hm LEFT_COMMAND J      &hm RSHFT K            &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
+   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &hm RSHFT K            &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
    &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                    &hm LS(B) B            &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
    &mo 2                &kp GRAVE         &kp TAB        &kp CAPS                   &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER                      &kp SPACE           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
@@ -102,7 +129,7 @@
         layer_mod {
             bindings = <
   &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                             &none                                                                              &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &none
-  &none         &none         &none         &none         &none         &none                       &bootloader                                                                         &bootloader         &none         &none         &none         &none         &none   &none
+  &none         &none         &none         &none         &none         &none                      &bootloader                                                                         &bootloader         &none         &none         &none         &none         &none   &none
   &none         &none         &none         &none         &none         &none            &rgb_ug RGB_MEFS_CMD 5  &bt BT_CLR   &none   &none   &none  &bt BT_CLR  &bt BT_CLR  &rgb_ug RGB_MEFS_CMD 5         &none         &none         &none         &none         &none   &none
   &none         &none         &none         &none         &none         &none                             &none       &none   &none   &none   &none       &none       &none                   &none         &none         &none         &none         &none         &none   &none
   &none         &none         &none    &bl BL_INC    &bl BL_DEC                                 &rgb_ug RGB_TOG  &bl BL_TOG   &none                       &none  &bl BL_TOG         &rgb_ug RGB_TOG                  &bl BL_INC    &bl BL_DEC         &none         &none   &none
