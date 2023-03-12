@@ -86,6 +86,12 @@
             key-positions = <31 23>;
             bindings = <&kp LS(SQT)>;
         };
+        combo_hm_secondary_0 {
+            timeout-ms = <50>;
+            key-positions = <31 23>;
+            bindings = <&kp LS(SQT)>;
+        };
+        
     };
 
     keymap {
@@ -98,11 +104,11 @@
 
 
 */
-   &hm LS(EQUAL) EQUAL  &hm LS(N1) N1     &hm LS(N2) N2  &hm LS(N3) N3              &hm LS(N4) N4                  &hm LS(N5) N5          &tog 1                                                                                                     &mo 3           &hm LS(N6) N6       &hm LS(N7) N7           &hm LS(N8) N8          &hm LS(N9) N9     &hm LS(N0) N0       6&hm LS(MINUS) MINUS
+   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                    &hm PRCNT N5           &tog 1                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8           &hm LPAR N9        &hm RPAR N0         &hm UNDERSCORE MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                    &hm LS(T) T            &none                                                                                                      &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
    &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &hm RSHFT K            &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
    &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                    &hm LS(B) B            &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
-   &mo 2                &kp GRAVE         &kp TAB        &kp CAPS                   &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER                      &kp SPACE           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
+   &mo 2                &kp CAPS          &kp TAB        &kp DEL                    &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER                      &kp SPACE           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
         };
 
