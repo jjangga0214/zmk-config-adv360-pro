@@ -76,22 +76,128 @@
 
     combos {
         compatible = "zmk,combos";
+        combo_doublequote {
+            timeout-ms = <100>;
+            key-positions = <31 23>;
+            bindings = <&kp DQT>;
+        };
         combo_quote {
-            timeout-ms = <50>;
+            timeout-ms = <100>;
             key-positions = <32 23>;
             bindings = <&kp SQT>;
         };
-        combo_doublequote {
-            timeout-ms = <50>;
-            key-positions = <31 23>;
+        combo_underscore {
+            timeout-ms = <100>;
+            key-positions = <31 24>;
+            bindings = <&kp UNDERSCORE>;
+        };
+        combo_minus {
+            timeout-ms = <100>;
+            key-positions = <32 24>;
+            bindings = <&kp MINUS>;
+        };
+        combo_pipe {
+            timeout-ms = <100>;
+            key-positions = <31 25>;
+            bindings = <&kp PIPE>;
+        };
+        combo_backslash {
+            timeout-ms = <100>;
+            key-positions = <32 25>;
+            bindings = <&kp BSLH>;
+        };
+        combo_plus {
+            timeout-ms = <100>;
+            key-positions = <31 43>;
+            bindings = <&kp PLUS>;
+        };
+        combo_equal {
+            timeout-ms = <100>;
+            key-positions = <32 43>;
+            bindings = <&kp EQUAL>;
+        };
+        combo_brakets {
+            timeout-ms = <100>;
+            key-positions = <30 44>;
+            bindings = <&kp LBKT>;
+        };
+        combo_braces {
+            timeout-ms = <100>;
+            key-positions = <31 44>;
+            bindings = <&kp LBRC>;
+        };
+        combo_parenthesises {
+            timeout-ms = <100>;
+            key-positions = <32 44>;
+            bindings = <&kp LPAR>;
+        };
+        combo_tilde {
+            timeout-ms = <100>;
+            key-positions = <30 45>;
+            bindings = <&kp TILDE>;
+        };
+        combo_grave {
+            timeout-ms = <100>;
+            key-positions = <31 45>;
+            bindings = <&kp GRAVE>;
+        };
+        combo_ltgt {
+            timeout-ms = <100>;
+            key-positions = <32 45>;
+            bindings = <&kp LT>;
+        };
+        combo_caret {
+            timeout-ms = <100>;
+            key-positions = <30 63>;
+            bindings = <&kp CARET>;
+        };
+        combo_amps {
+            timeout-ms = <100>;
+            ikey-positions = <31 63>;
+            bindings = <&kp AMPS>;
+        };
+        combo_star {
+            timeout-ms = <100>;
+            key-positions = <32 63>;
+            bindings = <&kp STAR>;
+        };
+        combo_PRCNT {
+            timeout-ms = <100>;
+            key-positions = <30 64>;
+            bindings = <&kp PRCNT>;
+        };
+        combo_excl {
+            timeout-ms = <100>;
+            key-positions = <31 64>;
+            bindings = <&kp EXCL>;
+        };
+        combo_qmark {
+            timeout-ms = <100>;
+            key-positions = <32 64>;
+            bindings = <&kp QMARK>;
+        };
+        combo_dllr {
+            timeout-ms = <100>;
+            key-positions = <30 65>;
+            bindings = <&kp DLLR>;
+        };
+        combo_at {
+            timeout-ms = <100>;
+            key-positions = <31 65>;
+            bindings = <&kp AT>;
+        };
+        combo_hash {
+            timeout-ms = <100>;
+            key-positions = <32 65>;
+            bindings = <&kp HASH>;
+        };
+                     
+        /* combo_hm_secondary_0 {
+            timeout-ms = <100>;
+            key-positions = <0 0>;
             bindings = <&kp LS(SQT)>;
         };
-        combo_hm_secondary_0 {
-            timeout-ms = <50>;
-            key-positions = <31 23>;
-            bindings = <&kp LS(SQT)>;
-        };
-        
+        /*
     };
 
     keymap {
@@ -99,11 +205,6 @@
 
         default_layer {
             bindings = <
-
-/*
-
-
-*/
    &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                    &hm PRCNT N5           &tog 1                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8           &hm LPAR N9        &hm RPAR N0         &hm UNDERSCORE MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                    &hm LS(T) T            &none                                                                                                      &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
    &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &hm RSHFT K            &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
@@ -148,7 +249,7 @@
    &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp T               &none                                                                                                                &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
    &kp ESC            &hm LCTRL A     &hm LALT N4    &hm LSHFT N5     &hm LEFT_COMMAND N6 &kp N0              &none                     &kp LCTRL      &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
    &kp LSHFT          &kp Z           &kp N1         &kp N2           &kp N3              &kp BSPC            &none                     &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
-   &mo 2              &kp GRAVE       &kp CAPS       &kp N0           &kp DEL             &kp BSPC            &hm LSHFT RIGHT_COMMAND                  &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                     &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
+   &mo 2              &kp GRAVE       &kp CAPS       &kp N0           &kp DEL             &kp BSPC            &hm LSHFT RIGHT_COMMAND                  &kp END                              &kp PG_DN               &kp ENTER      &kp N0                        &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
