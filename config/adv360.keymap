@@ -192,12 +192,12 @@
             bindings = <&kp HASH>;
         };
                      
-        /* combo_hm_secondary_0 {
-            timeout-ms = <100>;
-            key-positions = <0 0>;
-            bindings = <&kp LS(SQT)>;
-        };
-        /*
+    /* combo_hm_secondary_0 {
+     *     timeout-ms = <100>;
+     *     key-positions = <0 0>;
+     *     bindings = <&kp LS(SQT)>;
+     * };
+     */
     };
 
     keymap {
