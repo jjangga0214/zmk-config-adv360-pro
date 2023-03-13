@@ -126,17 +126,17 @@
         combo_brakets {
             timeout-ms = <75>;
             key-positions = <30 44>;
-            bindings = <&kp LBKT>;
+            bindings = <&brakets>;
         };
         combo_braces {
             timeout-ms = <75>;
             key-positions = <31 44>;
-            bindings = <&kp LBRC>;
+            bindings = <&braces>;
         };
         combo_parenthesises {
             timeout-ms = <75>;
             key-positions = <32 44>;
-            bindings = <&kp LPAR>;
+            bindings = <&parens>;
         };
         combo_tilde {
             timeout-ms = <75>;
@@ -203,6 +203,16 @@
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
+  
+        hm_shft: homerow_mods_shift {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS_SHIFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <125>; /* faster */
+            quick_tap_ms = <110>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
 
         hlt: hold-preferred-lt {
             compatible = "zmk,behavior-hold-tap";
@@ -214,19 +224,29 @@
             bindings = <&mo>, <&kp>;
         };
 
+        ht_ltgt: ht_ltgt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LTGT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <145>;
+            flavor = "balanced";
+            bindings = <&ltgt>, <&kp DOT>;
+        };
+
         td_l_mid: tap_dance_left_middle_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm LSHFT D>, <&cmd_tab>;
+            bindings = <&hm_shft LSHFT D>, <&cmd_tab>;
         };
         td_l_mid_2: tap_dance_left_middle_finger_home_row_on_secondary_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_MID_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm LSHFT N5>, <&cmd_tab>;
+            bindings = <&hm_shft LSHFT N5>, <&cmd_tab>;
         };
         td_l_ind: tap_dance_left_index_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
@@ -255,7 +275,7 @@
             label = "TD_R_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm RSHFT K>, <&sk RSHFT>;
+            bindings = <&hm_shft RSHFT K>, <&sk RSHFT>;
         };
         td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
             compatible = "zmk,behavior-tap-dance";
@@ -269,7 +289,7 @@
             label = "TD_R_RING_LOWER";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm LS(DOT) DOT>, <&thin_arrow>;
+            bindings = <&ht_ltgt>, <&thin_arrow>;
         };
 
     };
