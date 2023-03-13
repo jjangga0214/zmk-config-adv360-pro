@@ -204,9 +204,9 @@
             bindings = <&kp>, <&kp>;
         };
   
-        hm_shft: homerow_mods_shift {
+        hm_mid: homerow_mods_middle_finger {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_SHIFT";
+            label = "HM_MID";
             #binding-cells = <2>;
             tapping-term-ms = <125>; /* faster */
             quick_tap_ms = <110>;
@@ -214,9 +214,9 @@
             bindings = <&kp>, <&kp>;
         };
 
-        hlt: hold-preferred-lt {
+        hlt: hold_preferred_lt {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD-PHOMEROW_MODS";
+            label = "HLT";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <145>;
@@ -226,7 +226,7 @@
 
         ht_ltgt: ht_ltgt {
             compatible = "zmk,behavior-hold-tap";
-            label = "LTGT";
+            label = "HT_LTGT";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <145>;
@@ -239,14 +239,14 @@
             label = "TD_L_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm_shft LSHFT D>, <&cmd_tab>;
+            bindings = <&hm_mid LSHFT D>, <&cmd_tab>;
         };
         td_l_mid_2: tap_dance_left_middle_finger_home_row_on_secondary_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_MID_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm_shft LSHFT N5>, <&cmd_tab>;
+            bindings = <&hm_mid LSHFT N5>, <&cmd_tab>;
         };
         td_l_ind: tap_dance_left_index_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
@@ -275,7 +275,7 @@
             label = "TD_R_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&hm_shft RSHFT K>, <&sk RSHFT>;
+            bindings = <&hm_mid RSHFT K>, <&sk RSHFT>;
         };
         td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
             compatible = "zmk,behavior-tap-dance";
