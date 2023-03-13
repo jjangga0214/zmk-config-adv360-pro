@@ -35,6 +35,50 @@
                 , <&macro_press &kp LEFT_ALT>
                 , <&macro_release &kp LEFT_COMMAND &kp LEFT_ALT>;
         };
+        thick_arrow: thick_arrow {
+            label = "THICK_ARROW";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp EQUAL>
+                , <&macro_tap &kp GT>;
+        };
+        thin_arrow: thin_arrow {
+            label = "THIN_ARROW";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp MINUS &kp GT>;
+        };
+        parens: parenthesises {
+            label = "PARENS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+        };
+        braces: braces {
+            label = "BRACES";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
+        };
+        brakets: brakets {
+            label = "BRAKETS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+        };
+        ltgt: ltgt {
+            label = "LTGT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LT &kp GT &kp LEFT>;
+        };
+
     }; 
 
     combos {
@@ -96,63 +140,53 @@
         };
         combo_tilde {
             timeout-ms = <75>;
-            key-positions = <30 45>;
+            key-positions = <31 45>;
             bindings = <&kp TILDE>;
         };
         combo_grave {
             timeout-ms = <75>;
-            key-positions = <31 45>;
+            key-positions = <32 45>;
             bindings = <&kp GRAVE>;
         };
-        combo_ltgt {
+        combo_percent {
             timeout-ms = <75>;
-            key-positions = <32 45>;
-            bindings = <&kp LT>;
+            key-positions = <30 63>;
+            bindings = <&kp PRCNT>;
+        };
+        combo_hash {
+            timeout-ms = <75>;
+            key-positions = <31 63>;
+            bindings = <&kp HASH>;
+        };
+        combo_exclamation {
+            timeout-ms = <75>;
+            key-positions = <32 63>;
+            bindings = <&kp EXCL>;
         };
         combo_caret {
             timeout-ms = <75>;
-            key-positions = <30 63>;
+            key-positions = <30 64>;
             bindings = <&kp CARET>;
         };
         combo_amps {
             timeout-ms = <75>;
-            key-positions = <31 63>;
+            key-positions = <31 64>;
             bindings = <&kp AMPS>;
         };
         combo_star {
             timeout-ms = <75>;
-            key-positions = <32 63>;
-            bindings = <&kp STAR>;
-        };
-        combo_percent {
-            timeout-ms = <75>;
-            key-positions = <30 64>;
-            bindings = <&kp PRCNT>;
-        };
-        combo_exclamation {
-            timeout-ms = <75>;
-            key-positions = <31 64>;
-            bindings = <&kp EXCL>;
-        };
-        combo_question_mark {
-            timeout-ms = <75>;
             key-positions = <32 64>;
-            bindings = <&kp QMARK>;
+            bindings = <&kp STAR>;
         };
         combo_dollar {
             timeout-ms = <75>;
-            key-positions = <30 65>;
+            key-positions = <31 65>;
             bindings = <&kp DLLR>;
         };
         combo_at {
             timeout-ms = <75>;
-            key-positions = <31 65>;
-            bindings = <&kp AT>;
-        };
-        combo_hash {
-            timeout-ms = <75>;
             key-positions = <32 65>;
-            bindings = <&kp HASH>;
+            bindings = <&kp AT>;
         };
 
     };
@@ -164,7 +198,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <175>;
             quick_tap_ms = <145>;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
@@ -180,23 +214,21 @@
             bindings = <&mo>, <&kp>;
         };
 
-        td_l_mid: tap_dance_left_home_row_middle_finger {
+        td_l_mid: tap_dance_left_middle_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&hm LSHFT D>, <&cmd_tab>;
         };
-
-        td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
+        td_l_mid_2: tap_dance_left_middle_finger_home_row_on_secondary_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_MID_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&hm LSHFT N5>, <&cmd_tab>;
         };
-
-        td_l_ind: tap_dance_left_home_row_index_finger {
+        td_l_ind: tap_dance_left_index_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_IND";
             #binding-cells = <0>;
@@ -204,29 +236,40 @@
 
             bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
         };
-
-        td_l_ind_2: tap_dance_left_home_row_index_finger_on_secondary_layer {
+        td_l_ind_2: tap_dance_left_index_finger_home_row_on_secondary_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_IND_2";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
         };
-
-        td_r_ind: tap_dance_right_home_row_index_finger {
+        td_r_ind: tap_dance_right_index_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_IND";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
         };
-
-        td_r_mid: tap_dance_right_home_row_middle_finger {
+        td_r_mid: tap_dance_right_middle_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_MID";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&hm RSHFT K>, <&sk RSHFT>;
+        };
+        td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_MID_LOWER";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LG(LS(Z)) COMMA>, <&thick_arrow>;
+        };
+        td_r_ring_lower: tap_dance_right_ring_finger_lower_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_RING_LOWER";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LS(DOT) DOT>, <&thin_arrow>;
         };
 
     };
@@ -239,7 +282,7 @@
    &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
    &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
-   &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
+   &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH   &kp RSHFT
    &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                        &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
         };
