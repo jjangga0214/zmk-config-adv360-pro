@@ -82,6 +82,7 @@
     }; 
 
     combos {
+        
         compatible = "zmk,combos";
         combo_doublequote {
             timeout-ms = <75>;
@@ -231,7 +232,7 @@
             tapping-term-ms = <200>;
             quick_tap_ms = <145>;
             flavor = "balanced";
-            bindings = <&ltgt>, <&kp DOT>;
+            bindings = <&ltgt>, <&kp>;
         };
 
         td_l_mid: tap_dance_left_middle_finger_home_row {
@@ -252,44 +253,44 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_IND";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-
+            tapping-term-ms = <300>;
             bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
         };
         td_l_ind_2: tap_dance_left_index_finger_home_row_on_secondary_layer {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_L_IND_2";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
         };
         td_r_ind: tap_dance_right_index_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_IND";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
         };
         td_r_mid: tap_dance_right_middle_finger_home_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_MID";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&hm_mid RSHFT K>, <&sk RSHFT>;
         };
         td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_MID_LOWER";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
             bindings = <&hm LG(LS(Z)) COMMA>, <&thick_arrow>;
         };
         td_r_ring_lower: tap_dance_right_ring_finger_lower_row {
             compatible = "zmk,behavior-tap-dance";
             label = "TD_R_RING_LOWER";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&ht_ltgt>, <&thin_arrow>;
+            tapping-term-ms = <300>;
+            /* Why passing meaningless parameters 0? REF: https://github.com/zmkfirmware/zmk/issues/1474 */
+            bindings = <&ht_ltgt 0 DOT>, <&thin_arrow>;
         };
 
     };
@@ -302,7 +303,7 @@
    &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
    &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
-   &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH   &kp RSHFT
+   &kp LSHFT            &hm LG(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH   &kp RSHFT
    &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                        &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
         };
