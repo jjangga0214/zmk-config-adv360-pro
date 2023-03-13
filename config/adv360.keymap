@@ -50,7 +50,7 @@
         };
     };
 
-    td_l_mid: td_l_mid {
+    td_l_mid: tap_dance_left_home_row_middle_finger {
         compatible = "zmk,behavior-tap-dance";
         label = "TD_L_MID";
         #binding-cells = <0>;
@@ -58,7 +58,7 @@
         bindings = <&hm LSHFT D>, <&cmd_tab>;
     };
 
-    td_l_mid_2: td_l_mid_2 {
+    td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
         compatible = "zmk,behavior-tap-dance";
         label = "TD_L_MID_2";
         #binding-cells = <0>;
@@ -66,7 +66,7 @@
         bindings = <&hm LSHFT N5>, <&cmd_tab>;
     };
 
-    td_l_ind: td_l_ind {
+    td_l_ind: tap_dance_left_home_row_index_finger {
         compatible = "zmk,behavior-tap-dance";
         label = "TD_L_IND";
         #binding-cells = <0>;
@@ -74,7 +74,7 @@
         bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
     };
 
-    td_l_ind_2: td_l_ind_2 {
+    td_l_ind_2: tap_dance_lefi_home_row_index_finger_on_secondary_layer {
         compatible = "zmk,behavior-tap-dance";
         label = "TD_L_IND_2";
         #binding-cells = <0>;
@@ -82,12 +82,20 @@
         bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
     };
 
-    td_r_ind: td_r_ind {
+    td_r_ind: tap_dance_right_home_row_index_finger {
         compatible = "zmk,behavior-tap-dance";
         label = "TD_R_IND";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
+        bindings = <&hm RIGHT_COMMAND J>, <&caps_word>;
+    };
+
+    td_r_mid: tap_dance_right_home_row_middle_finger {
+        compatible = "zmk,behavior-tap-dance";
+        label = "TD_R_MID";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&hm RSHFT K>, <&sk Rtd_r_midSHFT>;
     };
 
     combos {
@@ -215,9 +223,9 @@
 
         default_layer {
             bindings = <
-   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                    &hm PRCNT N5           &tog 1                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8           &hm LPAR N9        &hm RPAR N0         &hm UNDERSCORE MINUS
+   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                    &hm PRCNT N5           &tog 1                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
    &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                    &hm LS(T) T            &none                                                                                                      &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
-   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &hm RSHFT K            &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
+   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
    &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                    &hm LS(B) B            &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
    &mo 2                &kp CAPS          &kp TAB        &kp DEL                    &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER                      &kp SPACE           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
