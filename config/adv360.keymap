@@ -35,71 +35,7 @@
                 , <&macro_press &kp LEFT_ALT>
                 , <&macro_release &kp LEFT_COMMAND &kp LEFT_ALT>;
         };
-    };
-
-    behaviors {
-        #include "macros.dtsi"
-
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick_tap_ms = <100>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        td_l_mid: tap_dance_left_home_row_middle_finger {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_MID";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm LSHFT D>, <&cmd_tab>;
-        };
-
-        td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_MID_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm LSHFT N5>, <&cmd_tab>;
-        };
-
-        td_l_ind: tap_dance_left_home_row_index_finger {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_IND";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-
-            bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
-        };
-
-        td_l_ind_2: tap_dance_lefi_home_row_index_finger_on_secondary_layer {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_IND_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
-        };
-
-        td_r_ind: tap_dance_right_home_row_index_finger {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_IND";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
-        };
-
-        td_r_mid: tap_dance_right_home_row_middle_finger {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_MID";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm RSHFT K>, <&sk RSHFT>;
-        };
-
-    };
+    }; 
 
     combos {
         compatible = "zmk,combos";
@@ -217,6 +153,70 @@
             timeout-ms = <100>;
             key-positions = <32 65>;
             bindings = <&kp HASH>;
+        };
+
+    };
+
+    behaviors {
+        #include "macros.dtsi"
+
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <100>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        td_l_mid: tap_dance_left_home_row_middle_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LSHFT D>, <&cmd_tab>;
+        };
+
+        td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LSHFT N5>, <&cmd_tab>;
+        };
+
+        td_l_ind: tap_dance_left_home_row_index_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+
+            bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
+        };
+
+        td_l_ind_2: tap_dance_lefi_home_row_index_finger_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
+        };
+
+        td_r_ind: tap_dance_right_home_row_index_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
+        };
+
+        td_r_mid: tap_dance_right_home_row_middle_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm RSHFT K>, <&sk RSHFT>;
         };
 
     };
