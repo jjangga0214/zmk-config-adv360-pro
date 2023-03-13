@@ -169,7 +169,7 @@
         };
         combo_amps {
             timeout-ms = <100>;
-            ikey-positions = <31 63>;
+            key-positions = <31 63>;
             bindings = <&kp AMPS>;
         };
         combo_star {
@@ -177,22 +177,22 @@
             key-positions = <32 63>;
             bindings = <&kp STAR>;
         };
-        combo_PRCNT {
+        combo_percent {
             timeout-ms = <100>;
             key-positions = <30 64>;
             bindings = <&kp PRCNT>;
         };
-        combo_excl {
+        combo_exclamation {
             timeout-ms = <100>;
             key-positions = <31 64>;
             bindings = <&kp EXCL>;
         };
-        combo_qmark {
+        combo_question_mark {
             timeout-ms = <100>;
             key-positions = <32 64>;
             bindings = <&kp QMARK>;
         };
-        combo_dllr {
+        combo_dollar {
             timeout-ms = <100>;
             key-positions = <30 65>;
             bindings = <&kp DLLR>;
