@@ -19,7 +19,7 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT 0
-#define SECONDARY 4
+#define SECONDARY 1
 
 / {
   behaviors {
@@ -71,6 +71,7 @@
         label = "TD_L_IND";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
+
         bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
     };
 
@@ -87,7 +88,7 @@
         label = "TD_R_IND";
         #binding-cells = <0>;
         tapping-term-ms = <200>;
-        bindings = <&hm RIGHT_COMMAND J>, <&caps_word>;
+        bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
     };
 
     td_r_mid: tap_dance_right_home_row_middle_finger {
@@ -221,55 +222,43 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        layer_default {
             bindings = <
-   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                    &hm PRCNT N5           &tog 1                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
-   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                    &hm LS(T) T            &none                                                                                                      &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
-   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind                      &hm LS(G) G            &none           &kp LCTRL      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
-   &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                    &hm LS(B) B            &none           &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
-   &mo 2                &kp CAPS          &kp TAB        &kp DEL                    &kp BSPC                       &lt SECONDARY BSPC     &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER                      &kp SPACE           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
+   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
+   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
+   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
+   &kp LSHFT            &hm LS(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &hm LG(LS(Z)) COMMA    &hm LS(DOT) DOT   &hm LS(FSLH) FSLH   &kp RSHFT
+   &mo 2                &kp CAPS          &kp TAB        &kp DEL                    &kp BSPC                                       &lt SECONDARY BSPC    &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
             >;
         };
-
-        layer_keypad {
+        layer_secondary {
             bindings = <
- &kp EQUAL     &kp N1    &kp N2    &kp N3     &kp N4  &kp N5              &trans                                                                 &mo 3  &kp N6  &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
-   &kp TAB      &kp Q     &kp W     &kp E      &kp R   &kp T               &none                                                                 &none   &kp Y   &kp KP_N7     &kp KP_N8      &kp KP_N9     &kp KP_MINUS   &kp BSLH
-   &kp ESC      &kp A     &kp S     &kp D      &kp F   &kp G               &none  &kp LCTRL  &kp LALT   &none   &none   &kp LGUI  &kp RCTRL      &none   &kp H   &kp KP_N4     &kp KP_N5      &kp KP_N6      &kp KP_PLUS    &kp SQT
- &kp LSHFT      &kp Z     &kp X     &kp C      &kp V   &kp B               &none      &none  &kp HOME   &none   &none  &kp PG_UP      &none      &none   &kp N   &kp KP_N1     &kp KP_N2      &kp KP_N3     &kp KP_ENTER  &kp RSHFT
-     &mo 2  &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT                    &kp BSPC    &kp DEL   &kp END                  &kp PG_DN  &kp ENTER  &kp KP_N0              &kp UP      &kp DOWN     &kp KP_DOT         &kp RBKT      &mo 2
-            >;
-        };
-
-        layer_fn {
-            bindings = <
- &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6            &tog 1                                                   &mo 3  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
- &trans  &trans  &trans  &trans  &trans  &trans             &none                                                   &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &trans  &trans  &trans  &trans  &trans             &none  &trans  &trans   &none   &none  &trans  &trans   &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &trans  &trans  &trans  &trans  &trans             &none   &none  &trans   &none   &none  &trans   &none   &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans  &trans          &trans  &trans   &trans   &trans   &trans
-            >;
-        };
-
-        layer_mod {
-            bindings = <
-  &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4                             &none                                                                              &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &none
-  &none         &none         &none         &none         &none         &none                      &bootloader                                                                         &bootloader         &none         &none         &none         &none         &none   &none
-  &none         &none         &none         &none         &none         &none            &rgb_ug RGB_MEFS_CMD 5  &bt BT_CLR   &none   &none   &none  &bt BT_CLR  &bt BT_CLR  &rgb_ug RGB_MEFS_CMD 5         &none         &none         &none         &none         &none   &none
-  &none         &none         &none         &none         &none         &none                             &none       &none   &none   &none   &none       &none       &none                   &none         &none         &none         &none         &none         &none   &none
-  &none         &none         &none    &bl BL_INC    &bl BL_DEC                                 &rgb_ug RGB_TOG  &bl BL_TOG   &none                       &none  &bl BL_TOG         &rgb_ug RGB_TOG                  &bl BL_INC    &bl BL_DEC         &none         &none   &none
-            >;
-        };
-
-        secondary_layer {
-            bindings = <
-   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog 1                                                                                                               &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
-   &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp T               &none                                                                                                                &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
-   &kp ESC            &hm LCTRL A     &hm LALT N4    &td_l_mid_2      &td_l_ind_2         &kp N0              &none                     &kp LCTRL      &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
+   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog DEFAULT                                                                                                         &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
+   &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp N0              &none                                                                                                                &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
+   &kp ESC            &hm LCTRL A     &hm LALT N4    &td_l_mid_2      &td_l_ind_2         &kp BSPC            &none                     &kp LCTRL      &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
    &kp LSHFT          &kp Z           &kp N1         &kp N2           &kp N3              &kp BSPC            &none                     &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
    &mo 2              &kp GRAVE       &kp CAPS       &kp N0           &kp DEL             &kp BSPC            &hm LSHFT RIGHT_COMMAND                  &kp END                              &kp PG_DN               &kp ENTER      &kp N0                        &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
+        layer_fn {
+            bindings = <
+ &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6            &tog DEFAULT                                            &mo 3  &kp F7  &kp F8  &kp F9   &kp F10  &kp F11  &kp F12
+ &trans  &kp F7  &kp F8  &kp F9  &kp F10  &trans           &none                                                   &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans           &none   &trans  &trans   &none   &none  &trans  &trans  &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &kp F1  &kp F2  &kp F3  &kp F12  &trans           &none   &none   &trans   &none   &none  &trans   &none  &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans  &trans         &trans  &trans   &trans   &trans   &trans
+            >;
+        };
+
+        layer_mod {
+            bindings = <
+  &none         &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4     &none                                                                                                      &trans                      &bt BT_SEL 0     &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4   &none
+  &none         &none         &none         &none         &none         &none            &bootloader                                                                                                &bootloader                 &none            &none         &none         &none         &none          &none
+  &none         &none         &none         &none         &none         &none            &rgb_ug RGB_MEFS_CMD 5  &bt BT_CLR   &none   &none         &none       &bt BT_CLR      &bt BT_CLR          &rgb_ug RGB_MEFS_CMD 5      &none            &none         &none         &none         &none          &none
+  &none         &none         &none         &none         &none         &none            &none                   &none        &none   &none         &none       &none           &none               &none                       &none            &none         &none         &none         &none          &none
+  &none         &none         &none         &bl BL_INC    &bl BL_DEC                     &rgb_ug RGB_TOG         &bl BL_TOG   &none                             &none           &bl BL_TOG          &rgb_ug RGB_TOG                              &bl BL_INC    &bl BL_DEC    &none         &none          &none
+            >;
+        };
     };
 };
