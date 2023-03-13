@@ -215,6 +215,16 @@
             bindings = <&kp>, <&kp>;
         };
 
+        hm_pinky: homerow_mods_pinky_finger {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_PINKY";
+            #binding-cells = <2>;
+            tapping-term-ms = <275>; /* slower as pinky has less muscular power */
+            quick_tap_ms = <175>;
+            flavor = "balanced";
+            bindings = <&kp>, <&kp>;
+        };
+
         hlt: hold_preferred_lt {
             compatible = "zmk,behavior-hold-tap";
             label = "HLT";
@@ -300,11 +310,11 @@
 
         layer_default {
             bindings = <
-   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0         &hm UNDERSCORE MINUS
-   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P         &hm LS(BSLH) BSLH
-   &kp ESC              &hm LCTRL A       &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm RCTRL SEMI      &hm LS(SQT) SQT
-   &kp LSHFT            &hm LG(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH   &kp RSHFT
-   &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                        &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT            &mo 2
+   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0            &hm UNDERSCORE MINUS
+   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P            &hm LS(BSLH) BSLH
+   &kp ESC              &hm_pinky LCTRL A &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
+   &kp LSHFT            &hm LG(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH      &kp RSHFT
+   &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                        &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT               &mo 2
             >;
         };
         layer_secondary {
