@@ -201,6 +201,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <145>;
+            global-quick-tap;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -211,6 +212,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <125>; /* faster */
             quick_tap_ms = <110>;
+            global-quick-tap;            
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -221,6 +223,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <275>; /* slower as pinky has less muscular power */
             quick_tap_ms = <175>;
+            global-quick-tap;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
