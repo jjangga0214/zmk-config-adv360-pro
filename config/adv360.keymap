@@ -22,21 +22,8 @@
 #define SECONDARY 1
 
 / {
-  behaviors {
-    #include "macros.dtsi"
 
-    hm: homerow_mods {
-        compatible = "zmk,behavior-hold-tap";
-        label = "HOMEROW_MODS";
-        #binding-cells = <2>;
-        tapping-term-ms = <200>;
-        quick_tap_ms = <100>;
-        flavor = "tap-preferred";
-        bindings = <&kp>, <&kp>;
-    };
-  };
-
-   macros {
+     macros {
         cmd_tab: cmd_tab {
             label = "CMD_TAB";
             compatible = "zmk,behavior-macro";
@@ -50,53 +37,68 @@
         };
     };
 
-    td_l_mid: tap_dance_left_home_row_middle_finger {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_L_MID";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&hm LSHFT D>, <&cmd_tab>;
-    };
+    behaviors {
+        #include "macros.dtsi"
 
-    td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_L_MID_2";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&hm LSHFT N5>, <&cmd_tab>;
-    };
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <100>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
 
-    td_l_ind: tap_dance_left_home_row_index_finger {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_L_IND";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
+        td_l_mid: tap_dance_left_home_row_middle_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LSHFT D>, <&cmd_tab>;
+        };
 
-        bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
-    };
+        td_l_mid_2: tap_dance_left_home_row_middle_finger_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LSHFT N5>, <&cmd_tab>;
+        };
 
-    td_l_ind_2: tap_dance_lefi_home_row_index_finger_on_secondary_layer {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_L_IND_2";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
-    };
+        td_l_ind: tap_dance_left_home_row_index_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
 
-    td_r_ind: tap_dance_right_home_row_index_finger {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_R_IND";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
-    };
+            bindings = <&hm LEFT_COMMAND F>, <&kp ESC>;
+        };
 
-    td_r_mid: tap_dance_right_home_row_middle_finger {
-        compatible = "zmk,behavior-tap-dance";
-        label = "TD_R_MID";
-        #binding-cells = <0>;
-        tapping-term-ms = <200>;
-        bindings = <&hm RSHFT K>, <&sk RSHFT>;
+        td_l_ind_2: tap_dance_lefi_home_row_index_finger_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LEFT_COMMAND N6>, <&kp ESC>;
+        };
+
+        td_r_ind: tap_dance_right_home_row_index_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm LEFT_COMMAND J>, <&caps_word>;
+        };
+
+        td_r_mid: tap_dance_right_home_row_middle_finger {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm RSHFT K>, <&sk RSHFT>;
+        };
+
     };
 
     combos {
@@ -243,11 +245,11 @@
 
         layer_fn {
             bindings = <
- &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6            &tog DEFAULT                                            &mo 3  &kp F7  &kp F8  &kp F9   &kp F10  &kp F11  &kp F12
- &trans  &kp F7  &kp F8  &kp F9  &kp F10  &trans           &none                                                   &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans           &none   &trans  &trans   &none   &none  &trans  &trans  &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &kp F1  &kp F2  &kp F3  &kp F12  &trans           &none   &none   &trans   &none   &none  &trans   &none  &none  &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans                  &trans  &trans  &trans         &trans  &trans   &trans   &trans   &trans
+ &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6   &tog DEFAULT                                            &mo 3  &kp F7  &kp F8  &kp F9   &kp F10  &kp F11  &kp F12
+ &trans  &kp F7  &kp F8  &kp F9  &kp F10  &trans  &none                                                   &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans  &none   &trans  &trans   &none   &none  &trans  &trans  &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &kp F1  &kp F2  &kp F3  &kp F12  &trans  &none   &none   &trans   &none   &none  &trans   &none  &none  &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &trans  &trans  &trans  &trans           &trans  &trans  &trans                  &trans  &trans  &trans         &trans  &trans   &trans   &trans   &trans
             >;
         };
 
