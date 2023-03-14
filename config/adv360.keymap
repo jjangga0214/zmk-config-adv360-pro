@@ -195,63 +195,6 @@
     behaviors {
         #include "macros.dtsi"
 
-        td_l_mid: tap_dance_left_middle_finger_home_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_MID";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp D>, <&kp ESC>;
-        };
-        td_l_mid_2: tap_dance_left_middle_finger_home_row_on_secondary_layer {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_MID_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp N5>, <&kp ESC>;
-        }; 
-        td_l_ind: tap_dance_left_index_finger_home_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_IND";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp F>, <&cmd_tab>;
-        };
-        td_l_ind_2: tap_dance_left_index_finger_home_row_on_secondary_layer {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_L_IND_2";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp N6>, <&cmd_tab>;
-        };
-        td_r_ind: tap_dance_right_index_finger_home_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_IND";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp J>, <&sk RSHFT>;
-        };
-        td_r_mid: tap_dance_right_middle_finger_home_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_MID";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp K>, <&caps_word>;
-        };
-        td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_MID_LOWER";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp COMMA>, <&thick_arrow>;
-        };
-        td_r_ring_lower: tap_dance_right_ring_finger_lower_row {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_R_RING_LOWER";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&kp DOT>, <&thin_arrow>;
-        };
-
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS";
@@ -259,7 +202,6 @@
             tapping-term-ms = <175>;
             quick_tap_ms = <145>;
             global-quick-tap;
-            retro-tap;
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -270,8 +212,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <125>; /* faster */
             quick_tap_ms = <110>;
-            global-quick-tap;
-            retro-tap;           
+            global-quick-tap;            
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -283,7 +224,6 @@
             tapping-term-ms = <275>; /* slower as pinky has less muscular power */
             quick_tap_ms = <175>;
             global-quick-tap;
-            retro-tap;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -294,97 +234,78 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <175>;
-            retro-tap;
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
         };
 
-        ht_td_l_mid: hold_tap_tap_dance_left_middle_finger_home_row { 
+        ht_ltgt: ht_ltgt {
             compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_l_mid";
-            #binding-cells = <2>;
-            tapping-term-ms = <125>; /* faster */
-            quick_tap_ms = <110>;
-            global-quick-tap;     
-            retro-tap;       
-            flavor = "balanced";
-            bindings = <&kp>, <&td_l_mid>;
-        };
-        ht_td_l_mid_2: hold_tap_tap_dance_left_middle_finger_home_row_on_secondary_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_l_mid_2";
-            #binding-cells = <2>;
-            tapping-term-ms = <125>; /* faster */
-            quick_tap_ms = <110>;
-            global-quick-tap;       
-            retro-tap;     
-            flavor = "balanced";
-            bindings = <&kp>, <&td_l_mid_2>;
-        };
-        ht_td_l_ind: hold_tap_tap_dance_left_inxex_finger_home_row {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_l_ind";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            quick_tap_ms = <145>;
-            global-quick-tap;
-            flavor = "balanced";
-            bindings = <&kp>, <&td_l_ind>;
-        };
-        ht_td_l_ind_2: hold_tap_tap_dance_left_index_finger_home_row_on_secondary_layer {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_l_ind_2";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            quick_tap_ms = <145>;
-            global-quick-tap;
-            retro-tap;
-            flavor = "balanced";
-            bindings = <&kp>, <&td_l_ind_2>;
-        };
-        ht_td_r_ind: hold_tap_tap_dance_right_index_finger_home_row {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_r_ind";
-            #binding-cells = <2>;
-            tapping-term-ms = <175>;
-            quick_tap_ms = <145>;
-            global-quick-tap;
-            retro-tap;
-            flavor = "balanced";
-            bindings = <&kp>, <&td_r_ind>;
-        };
-        ht_td_r_mid: hold_tap_tap_dance_right_middle_finger_home_row {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_r_mid";
-            #binding-cells = <2>;
-            tapping-term-ms = <125>; /* faster */
-            quick_tap_ms = <110>;
-            global-quick-tap;     
-            retro-tap;       
-            flavor = "balanced";
-            bindings = <&kp>, <&td_r_mid>;
-        };
-        ht_td_r_mid_lower: hold_tap_tap_dance_right_middle_finger_lower_row {
-            compatible = "zmk,behavior-hold-tap";
-            label = "ht_td_r_mid_lower";
-            #binding-cells = <2>;
-            tapping-term-ms = <125>; /* faster */
-            quick_tap_ms = <110>;
-            global-quick-tap;        
-            retro-tap;    
-            flavor = "balanced";
-            bindings = <&kp>, <&td_r_mid_lower>;
-        };
-        ht_td_r_ring_lower: ht_td_r_ring_lower {
-            compatible = "zmk,behavior-hold-tap";
-            label = "td_r_ring_lower";
+            label = "HT_LTGT";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             quick_tap_ms = <145>;
-            retro-tap;
             flavor = "balanced";
-            bindings = <&ltgt>, <&td_r_ring_lower>;
+            bindings = <&ltgt>, <&kp>;
         };
+
+        td_l_mid: tap_dance_left_middle_finger_home_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm_mid LSHFT D>, <&kp ESC>;
+        };
+        td_l_mid_2: tap_dance_left_middle_finger_home_row_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_MID_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hm_mid LSHFT N5>, <&kp ESC>;
+        }; 
+        td_l_ind: tap_dance_left_index_finger_home_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&hm LEFT_COMMAND F>, <&cmd_tab>;
+        };
+        td_l_ind_2: tap_dance_left_index_finger_home_row_on_secondary_layer {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_L_IND_2";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&hm LEFT_COMMAND N6>, <&cmd_tab>;
+        };
+        td_r_ind: tap_dance_right_index_finger_home_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_IND";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&hm LEFT_COMMAND J>, <&sk RSHFT>;
+        };
+        td_r_mid: tap_dance_right_middle_finger_home_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_MID";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&hm_mid RSHFT K>, <&caps_word>;
+        };
+        td_r_mid_lower: tap_dance_right_middle_finger_lower_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_MID_LOWER";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            bindings = <&hm LG(LS(Z)) COMMA>, <&thick_arrow>;
+        };
+        td_r_ring_lower: tap_dance_right_ring_finger_lower_row {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_R_RING_LOWER";
+            #binding-cells = <0>;
+            tapping-term-ms = <300>;
+            /* Why passing meaningless parameters 0? REF: https://github.com/zmkfirmware/zmk/issues/1474 */
+            bindings = <&ht_ltgt 0 DOT>, <&thin_arrow>;
+        };
+
     };
 
     keymap {
@@ -392,20 +313,20 @@
 
         layer_default {
             bindings = <
-   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4                 &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7                 &hm STAR N8                     &hm LPAR N9               &hm RPAR N0            &hm UNDERSCORE MINUS
-   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R                 &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U                 &hm LS(I) I                     &hm LS(O) O               &hm LS(P) P            &hm LS(BSLH) BSLH
-   &kp ESC              &hm_pinky LCTRL A &hm LALT S     &ht_td_l_mid LSHFT 0       &ht_td_l_ind LEFT_COMMAND 0 &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &ht_td_r_ind LEFT_COMMAND 0 &ht_td_r_mid RSHFT 0            &hm RALT L                &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
-   &kp LSHFT            &hm LG(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V                 &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M                 &ht_td_r_mid_lower LG(LS(Z)) 0  &ht_td_r_ring_lower 0 0   &hm LS(FSLH) FSLH      &kp RSHFT
-   &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                            &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                     &kp DOWN                        &kp LBKT                  &kp RBKT               &mo 2
+   &hm PLUS EQUAL       &hm EXCL N1       &hm AT N2      &hm HASH N3                &hm DLLR N4             &hm PRCNT N5           &tog DEFAULT                                                                                                                     &mo 3           &hm CARET N6        &hm AMPS N7             &hm STAR N8            &hm LPAR N9       &hm RPAR N0            &hm UNDERSCORE MINUS
+   &kp TAB              &hm LS(Q) Q       &hm LS(W) W    &hm LS(E) E                &hm LS(R) R             &hm LS(T) T            &none                                                                                                                            &none           &hm LS(Y) Y         &hm LS(U) U             &hm LS(I) I            &hm LS(O) O       &hm LS(P) P            &hm LS(BSLH) BSLH
+   &kp ESC              &hm_pinky LCTRL A &hm LALT S     &td_l_mid                  &td_l_ind               &hm LS(G) G            &none                 &kp LCTRL                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &hm LS(H) H         &td_r_ind               &td_r_mid              &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
+   &kp LSHFT            &hm LG(Z) Z       &hm LG(X) X    &hm LG(C) C                &hm LG(V) V             &hm LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &hm LS(N) N         &hm LG(Z) M             &td_r_mid_lower        &td_r_ring_lower  &hm LS(FSLH) FSLH      &kp RSHFT
+   &mo 2                &kp GRAVE         &kp CAPS       &kp N0                     &kp DEL                                        &hlt SECONDARY BSPC   &hm LSHFT RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &kp LBKT          &kp RBKT               &mo 2
             >;
         };
         layer_secondary {
             bindings = <
-   &kp EQUAL          &kp N1          &kp N2         &kp N3                  &kp N4                         &kp N5              &tog DEFAULT                                                                                                                    &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
-   &kp TAB            &kp Q           &kp N7         &kp N8                  &kp N9                         &kp N0              &none                                                                                                                           &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
-   &kp ESC            &hm LCTRL A     &hm LALT N4    &ht_td_l_mid_2 LSHFT 0  &ht_td_l_ind_2 LEFT_COMMAND 0  &kp BSPC            &none                     &kp LCTRL                 &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
-   &kp LSHFT          &kp Z           &kp N1         &kp N2                  &kp N3                         &kp BSPC            &none                     &none                     &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
-   &mo 2              &kp GRAVE       &kp CAPS       &kp N0                  &kp DEL                                            &kp BSPC                  &hm LSHFT RIGHT_COMMAND   &kp END                              &kp PG_DN               &kp ENTER      &kp N0                        &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
+   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog DEFAULT                                                                                                         &mo 3           &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
+   &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp N0              &none                                                                                                                &none           &kp C_VOL_UP  &kp C_BRI_UP            &kp UP          &kp C_BRI_DN   &kp P             &kp BSLH
+   &kp ESC            &hm LCTRL A     &hm LALT N4    &td_l_mid_2      &td_l_ind_2         &kp BSPC            &none                     &kp LCTRL      &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
+   &kp LSHFT          &kp Z           &kp N1         &kp N2           &kp N3              &kp BSPC            &none                     &none          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &kp M                   &kp COMMA       &kp DOT        &kp FSLH          &kp RSHFT
+   &mo 2              &kp GRAVE       &kp CAPS       &kp N0           &kp DEL                                 &kp BSPC                  &hm LSHFT RIGHT_COMMAND         &kp END                              &kp PG_DN               &kp ENTER      &kp N0                        &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo 2
             >;
         };
 
