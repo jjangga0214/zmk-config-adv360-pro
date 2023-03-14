@@ -267,7 +267,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_STICKY_SHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <175>;
+            tapping-term-ms = <275>;
             bindings = <&hm LEFT_COMMAND J>, <&sk RSHFT>;
         };
 
