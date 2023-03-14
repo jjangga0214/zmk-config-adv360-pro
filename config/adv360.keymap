@@ -83,19 +83,19 @@
 
         combo_n7 {
             timeout-ms = <90>; /* slower as the ring finger has less muscular power */
-            key-positions = <17 43>;
+            key-positions = <16 43>;
             bindings = <&kp N7>;
             layers = <0 2>;
         };
         combo_n8 {
             timeout-ms = <75>;
-            key-positions = <18 43>;
+            key-positions = <17 43>;
             bindings = <&kp N8>;
             layers = <0 2>;
         };
         combo_n9 {
             timeout-ms = <75>;
-            key-positions = <19 43>;
+            key-positions = <18 43>;
             bindings = <&kp N9>;
             layers = <0 2>;
         };
