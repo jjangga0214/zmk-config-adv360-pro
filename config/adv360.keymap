@@ -38,14 +38,14 @@
                 , <&macro_press &kp LEFT_ALT>
                 , <&macro_release &kp LEFT_COMMAND &kp LEFT_ALT>;
         };
-        to_korean {
+        to_korean: to_korean {
             label = "TO_KOREAN";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp RIGHT_COMMAND &to KOREAN>; 
         };
-        to_default {
+        to_default: to_default {
             label = "TO_DEFAULT";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -344,38 +344,58 @@
             bindings = <&hm LEFT_COMMAND J>, <&sk RSHFT>;
         };
 
+        ht_to_korean: hold_tap_to_korean {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_TO_KOREAN";
+            #binding-cells = <2>;
+            tapping-term-ms = <2000>;
+            quick_tap_ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&to_korean>;            
+        };
+
+        ht_to_default: hold_tap_to_default {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_TO_DEFAULT";
+            #binding-cells = <2>;
+            tapping-term-ms = <2000>;
+            quick_tap_ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&to_default>;            
+        };
+
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        layer_default {
+        layer_default { /* Assume it is English */
             bindings = <
    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                     &mo MOD         &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9       &ht RPAR N0            &ht UNDERSCORE MINUS
    &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                            &none           &ht LS(Y) Y         &ht LS(U) U             &ht LS(I) I            &ht LS(O) O       &ht LS(P) P            &ht LS(BSLH) BSLH
-   &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &none                 &kp SPACE                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
+   &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &kp N0                &kp SPACE                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &ht LS(N) N         &ht LG(Z) M             &ht LG(LS(Z)) COMMA    &ht_ltgt 0 DOT    &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht RPAR N0                &kp DEL                                        &hlt FEATURE BSPC     &to_korean                     &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht RPAR N0                &kp DEL                                        &hlt FEATURE BSPC     &ht_to_korean RIGHT_COMMAND 0  &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
-        layer_korean {
+        layer_korean { /* Assume it is Korean */
             bindings = <
    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                     &mo MOD         &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9       &ht RPAR N0            &ht UNDERSCORE MINUS
    &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                            &none           &ht LS(Y) Y         &ht LS(U) U             &ht LS(I) I            &ht LS(O) O       &ht LS(P) P            &ht LS(BSLH) BSLH
-   &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &none                 &kp SPACE                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
+   &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &kp N1                &kp SPACE                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &ht LS(N) N         &ht LG(Z) M             &ht LG(LS(Z)) COMMA    &ht_ltgt 0 DOT    &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht RPAR N0                &kp DEL                                        &hlt FEATURE BSPC     &to_default                    &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht RPAR N0                &kp DEL                                        &hlt FEATURE BSPC     &ht_to_default RIGHT_COMMAND 0 &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
         layer_feature {
             bindings = <
-   &kp EQUAL          &kp N1          &kp N2         &kp N3           &kp N4              &kp N5              &tog DEFAULT                                                                                                                      &mo MOD         &kp N6        &kp N7                  &kp N8          &kp N9         &kp N0            &kp MINUS
-   &kp TAB            &kp Q           &kp N7         &kp N8           &kp N9              &kp N0              &none                                                                                                                             &none           &kp C_VOL_UP  &kp C_BRI_DN            &kp UP          &kp C_BRI_UP   &kp P             &kp BSLH
-   &kp ESC            &kp LCTRL       &kp LALT       &kp LSHFT        &kp LEFT_COMMAND    &kp BSPC            &none                     &kp SPACE                   &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none           &kp C_VOL_DN  &kp LEFT                &kp DOWN        &kp RIGHT      &hm RCTRL SEMI    &kp SQT
-   &kp LSHFT          &kp Z           &kp N1         &kp ESC          &cmd_tab            &kp BSPC            &none                     &none                       &kp HOME         &none   &none       &kp PG_UP               &none          &none           &kp N         &caps_word              &thick_arrow    &thin_arrow    &kp FSLH          &kp RSHFT
-   &mo FN             &kp GRAVE       &kp CAPS       &kp N0           &kp DEL                                 &kp BSPC                  &hm LSHFT RIGHT_COMMAND     &kp END                              &kp PG_DN               &kp ENTER      &kp N0                        &kp UP                  &kp DOWN        &kp LBKT       &kp RBKT          &mo FN
+   &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                     &mo MOD         &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9       &ht RPAR N0            &ht UNDERSCORE MINUS
+   &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                            &none           &kp C_VOL_UP        &kp C_BRI_DN            &kp UP                 &kp C_BRI_UP      &ht LS(P) P            &ht LS(BSLH) BSLH
+   &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                &kp SPACE                      &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none           &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT         &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
+   &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &kp ESC                    &cmd_tab                &kp BSPC               &none                 &none                          &kp HOME         &none   &none       &kp PG_UP               &none          &none           &ht LS(N) N         &caps_word              &thick_arrow           &thin_arrow       &ht LS(FSLH) FSLH      &kp RSHFT
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht RPAR N0                &kp DEL                                        &kp BSPC              &trans                         &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                           &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
@@ -383,7 +403,7 @@
             bindings = <
  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6   &tog DEFAULT                                            &mo MOD   &kp F7  &kp F8  &kp F9   &kp F10  &kp F11  &kp F12
  &trans  &kp F7  &kp F8  &kp F9  &kp F10  &trans  &none                                                   &none     &trans  &trans  &trans   &trans   &trans   &trans
- &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans  &none   &trans  &trans   &none   &none  &trans  &trans  &none     &trans  &trans  &trans   &trans   &trans   &trans
+ &trans  &kp F4  &kp F5  &kp F6  &kp F11  &trans  &kp N3  &trans  &trans   &none   &none  &trans  &trans  &none     &trans  &trans  &trans   &trans   &trans   &trans
  &trans  &kp F1  &kp F2  &kp F3  &kp F12  &trans  &none   &none   &trans   &none   &none  &trans   &none  &none     &trans  &trans  &trans   &trans   &trans   &trans
  &trans  &trans  &trans  &trans  &trans           &trans  &trans  &trans                  &trans  &trans  &trans            &trans  &trans   &trans   &trans   &trans
             >;
