@@ -222,7 +222,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_MODS_MIDDLE_FINGER";
             #binding-cells = <2>;
-            tapping-term-ms = <125>; /* faster */
+            tapping-term-ms = <150>; /* faster */
             quick_tap_ms = <110>;
             global-quick-tap;
             retro-tap;           
