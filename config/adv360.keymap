@@ -50,27 +50,6 @@
             bindings
                 = <&macro_tap &kp MINUS &kp GT>;
         };
-        parens: parenthesises {
-            label = "PARENS";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
-        };
-        braces: braces {
-            label = "BRACES";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
-        };
-        brakets: brakets {
-            label = "BRAKETS";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
-        };
         ltgt: ltgt {
             label = "LTGT";
             compatible = "zmk,behavior-macro";
@@ -87,12 +66,12 @@
         combo_doublequote {
             timeout-ms = <90>;
             key-positions = <31 23>;
-            bindings = <&kp DQT>;
+            bindings = <&kp DQT &kp DQT &kp LEFT>;
         };
         combo_quote {
             timeout-ms = <90>;
             key-positions = <32 23>;
-            bindings = <&kp SQT>;
+            bindings = <&kp SQT &kp SQT &kp LEFT>;
         };
         combo_underscore {
             timeout-ms = <90>;
@@ -127,17 +106,17 @@
         combo_brakets {
             timeout-ms = <60>;
             key-positions = <30 44>;
-            bindings = <&brakets>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT>;
         };
         combo_braces {
             timeout-ms = <60>;
             key-positions = <31 44>;
-            bindings = <&braces>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT>;
         };
         combo_parenthesises {
             timeout-ms = <60>;
             key-positions = <32 44>;
-            bindings = <&parens>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT>;
         };
         combo_tilde {
             timeout-ms = <60>;
@@ -225,7 +204,7 @@
             tapping-term-ms = <150>; /* faster */
             quick_tap_ms = <110>;
             global-quick-tap;
-            retro-tap;           
+            /* no retro-tap; */
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
