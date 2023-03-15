@@ -319,9 +319,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_PREFERRED_LT";
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             quick_tap_ms = <300>;
-            retro-tap;
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;            
         };
@@ -389,12 +388,12 @@
         layer_feature {
             bindings = <
    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                            &mo MOD                &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9       &ht RPAR N0            &ht UNDERSCORE MINUS
-   &kp TAB              &kp LG(Q)               &kp LG(W)      &kp LG(T)                  &kp LG(R)               &ht LS(T) T            &none                                                                                                                   &none                  &kp C_VOL_UP        &ht LS(U) U             &kp UP                 &ht LS(O) O       &kp C_BRI_DN           &ht LS(BSLH) BSLH
+   &kp TAB              &kp LG(Q)               &kp LG(W)      &kp LG(T)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                   &none                  &kp C_VOL_UP        &ht LS(U) U             &kp UP                 &ht LS(O) O       &kp C_BRI_DN           &ht LS(BSLH) BSLH
    &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                     &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                  &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT         &kp C_BRI_UP           &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &kp ESC                    &cmd_tab                &kp BSPC               &none                      &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                  &ht LS(N) N         &caps_word              &thick_arrow           &thin_arrow       &ht LS(FSLH) FSLH      &kp RSHFT
    &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 TAB                 &kp DEL                                        &kp BSPC                   &trans           &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                  &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
-        };
+        }
 
         layer_fn {
             bindings = <
