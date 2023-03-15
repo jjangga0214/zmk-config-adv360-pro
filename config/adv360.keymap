@@ -27,6 +27,41 @@
 / {
 
      macros {
+        parens: parenthesises {
+            label = "PARENS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+        };
+        braces: braces {
+            label = "BRACES";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
+        };
+        brakets: brakets {
+            label = "BRAKETS";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+        };
+        sqts: singlequotes {
+            label = "SINGLEQUOTES";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
+        };
+        dqts: doublequotes {
+            label = "DOUBLEQUOTES";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
+        };
         cmd_tab: cmd_tab {
             label = "CMD_TAB";
             compatible = "zmk,behavior-macro";
@@ -136,16 +171,16 @@
             layers = <0 2>;
         };
 
-        combo_doublequote {
+        combo_doublequotes {
             timeout-ms = <85>;
             key-positions = <31 23>;
-            bindings = <&kp DQT &kp DQT &kp LEFT>;
+            bindings = <&doublequotes>;
             layers = <0 2>;
         };
-        combo_quote {
+        combo_singlequotes {
             timeout-ms = <85>;
             key-positions = <32 23>;
-            bindings = <&kp SQT &kp SQT &kp LEFT>;
+            bindings = <&singlequotes>;
             layers = <0 2>;
         };
         combo_underscore {
@@ -187,19 +222,19 @@
         combo_brakets {
             timeout-ms = <50>;
             key-positions = <30 44>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT>;
+            bindings = <&brakets>;
             layers = <0 2>;
         };
         combo_braces {
             timeout-ms = <60>;
             key-positions = <31 44>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT>;
+            bindings = <&braces>;
             layers = <0 2>;
         };
         combo_parenthesises {
             timeout-ms = <60>;
             key-positions = <32 44>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT>;
+            bindings = <&parens>;
             layers = <0 2>;
         };
         combo_tilde {
