@@ -117,61 +117,6 @@
         
         compatible = "zmk,combos";
 
-        combo_n7 {
-            timeout-ms = <90>; /* slower as the ring finger has less muscular power */
-            key-positions = <16 43>;
-            bindings = <&kp N7>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n8 {
-            timeout-ms = <75>;
-            key-positions = <17 43>;
-            bindings = <&kp N8>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n9 {
-            timeout-ms = <75>;
-            key-positions = <18 43>;
-            bindings = <&kp N9>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n4 {
-            timeout-ms = <90>; /* slower as the ring finger has less muscular power */
-            key-positions = <30 43>;
-            bindings = <&kp N4>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n5 {
-            timeout-ms = <75>;
-            key-positions = <31 43>;
-            bindings = <&kp N5>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n6 {
-            timeout-ms = <75>;
-            key-positions = <32 43>;
-            bindings = <&kp N6>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n1 {
-            timeout-ms = <90>; /* slower as the ring finger has less muscular power */
-            key-positions = <50 43>;
-            bindings = <&kp N1>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n2 {
-            timeout-ms = <75>;
-            key-positions = <51 43>;
-            bindings = <&kp N2>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-        combo_n3 {
-            timeout-ms = <75>;
-            key-positions = <52 43>;
-            bindings = <&kp N3>;
-            layers = <DEFAULT FEATURE_BY_L FEATURE_BY_R>;
-        };
-
         combo_doublequotes {
             timeout-ms = <85>;
             key-positions = <31 23>;
@@ -407,7 +352,7 @@
    &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                    &none                   &ht LS(Y) Y         &ht LS(U) U             &ht LS(I) I            &ht LS(O) O       &ht LS(P) P            &ht LS(BSLH) BSLH
    &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &td_tab                 &ht LS(G) G            &ht_ly_ck RIGHT_COMMAND N0  &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &kp K_PWR               &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                       &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &ht LG(Z) M             &ht LG(LS(Z)) COMMA    &ht_ltgt 0 DOT    &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 TAB                 &kp DEL                                        &hlt FEATURE_BY_L BSPC      &to_korean       &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp N0         &kp CAPS                   &kp DEL                                        &hlt FEATURE_BY_L BSPC      &to_korean       &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
@@ -417,7 +362,7 @@
    &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                   &none                   &ht LS(Y) Y         &ht LS(U) U             &ht LS(I) I            &ht LS(O) O       &ht LS(P) P            &ht LS(BSLH) BSLH
    &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &ht_ly_ck RIGHT_COMMAND N1 &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &kp K_PWR               &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                      &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &ht LG(Z) M             &ht LG(LS(Z)) COMMA    &ht_ltgt 0 DOT    &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 TAB                 &kp DEL                                        &hlt FEATURE_BY_L BSPC     &to_default      &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp N0         &kp CAPS                   &kp DEL                                        &hlt FEATURE_BY_L BSPC     &to_default      &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
@@ -427,7 +372,7 @@
    &kp TAB              &kp LG(Q)               &kp LG(W)      &kp LG(T)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                   &none                   &kp C_VOL_UP        &ht LS(U) U             &kp UP                 &ht LS(O) O       &kp C_BRI_DN           &ht LS(BSLH) BSLH
    &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                     &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT         &kp C_BRI_UP           &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &kp ESC                    &cmd_tab                &kp BSPC               &none                      &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &caps_word              &thick_arrow           &thin_arrow       &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 TAB                 &kp DEL                                        &trans                     &trans           &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp N0         &kp CAPS                   &kp DEL                                        &trans                     &trans           &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >; 
         };
 
@@ -437,7 +382,7 @@
    &kp TAB              &kp LG(Q)               &kp LG(W)      &kp LG(T)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                   &none                   &kp C_VOL_UP        &ht LS(U) U             &kp UP                 &ht LS(O) O       &kp C_BRI_DN           &ht LS(BSLH) BSLH
    &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                     &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT         &kp C_BRI_UP           &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &kp ESC                    &cmd_tab                &kp BSPC               &none                      &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &caps_word              &thick_arrow           &thin_arrow       &ht LS(FSLH) FSLH      &kp RSHFT
-   &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 TAB                 &kp DEL                                        &kp BSPC                   &trans           &kp END                              &kp PG_DN               &kp BSPC       &trans                                      &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
+   &mo FN               &ht LS(GRAVE) GRAVE     &kp N0         &kp CAPS                   &kp DEL                                        &kp BSPC                   &trans           &kp END                              &kp PG_DN               &kp BSPC       &trans                                      &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &mo FN
             >;
         };
 
@@ -447,7 +392,7 @@
    &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                   &none                   &ht LS(Y) Y         &ht LS(U) U             &ht LS(I) I            &ht LS(O) O       &ht LS(P) P            &ht LS(BSLH) BSLH
    &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &ht RIGHT_COMMAND N3       &kp LCTRL        &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &kp K_PWR               &ht LS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L        &hm_pinky RCTRL SEMI   &hm LS(SQT) SQT
    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                      &none            &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &ht LG(Z) M             &ht LG(LS(Z)) COMMA    &ht_ltgt 0 DOT    &ht LS(FSLH) FSLH      &kp RSHFT
-   &trans               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht TAB N0                 &kp DEL                                        &kp BSPC                   &none            &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                                   &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &trans
+   &trans               &ht LS(GRAVE) GRAVE     &kp N0         &kp CAPS                   &kp DEL                                        &kp BSPC                   &none            &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                                   &kp TAB                 &kp DOWN               &ht LS(LBKT) LBKT &ht LS(RBKT) RBKT      &trans
             >;       
         };
 
