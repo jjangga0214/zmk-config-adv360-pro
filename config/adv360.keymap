@@ -336,7 +336,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_STICKY_SHIFT";
             #binding-cells = <0>;
-            tapping-term-ms = <275>;
+            tapping-term-ms = <225>;
             bindings = <&hm LEFT_COMMAND J>, <&sk RSHFT>;
         };
 
@@ -344,7 +344,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_TAB";
             #binding-cells = <0>;
-            tapping-term-ms = <275>;
+            tapping-term-ms = <225>;
             bindings = <&hm LEFT_COMMAND F>, <&kp TAB>;
         };
 
