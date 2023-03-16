@@ -253,7 +253,7 @@
         };
         ht_cmd_tab: hold_tap_cmd_tab {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_DEFAULT";
+            label = "HOLD_TAP_CMD_TAB";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <175>;
@@ -263,7 +263,7 @@
         };
         ht_sq: hold_tap_short_quick_tap_ms {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_DEFAULT";
+            label = "HOLD_TAP_SHORT_QUICK_TAP_MS";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <100>; /* This short value is to prevent hold resolution when typind fast. */
@@ -354,7 +354,7 @@
         layer_default {
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp W          &kp E                      &kp R                  &kp T                   &none                                                                                                                      &none                   &kp Y               &kp U                   &kp I                  &kp O               &ht RS(P) P           &ht RS(BSLH) BSLH
+    &kp TAB              &kp Q                   &kp W          &kp E                      &kp R                  &kp T                   &none                                                                                                                      &none                   &kp Y               &kp U                   &kp I                  &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
     &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F     &kp G                   &kp N0                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &kp C_SLEEP             &kp H               &kp J                   &kp K                  &kp L               &kp SEMI              &hm RS(SQT) SQT
     &kp LSHFT            &kp Z                   &kp X          &kp C                      &kp V                  &kp B                   &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp N               &kp M                   &kp COMMA              &kp DOT             &ht RS(FSLH) FSLH     &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &kp CAPS                   &kp DEL                                        &hlt FEATURE_BY_L BSPC       &kp RIGHT_COMMAND &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE                     &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
@@ -364,7 +364,7 @@
         layer_feature_by_left { /* Triggered by the left thumb */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))  &kp LG(Z)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                      &none                   &kp C_VOL_UP        &ht RS(U) U             &kp UP                 &ht RS(O) O         &kp RS(P)              &ht RS(BSLH) BSLH
+    &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))  &kp LG(Z)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                      &none                   &kp C_VOL_UP        &ht RS(U) U             &kp UP                 &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
     &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT           &kp SEMI               &hm RS(SQT) SQT
     &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(V) LG(C)            &cmd_tab                &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word              &thick_arrow           &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &kp CAPS                   &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
@@ -374,7 +374,7 @@
         layer_feature_by_right { /* Triggered by the right thumb */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &ht N7 W       &ht N8 E                   &ht N9 R                &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp N7                  &kp N8                 &kp N9              &kp C_BRI_DN           &ht RS(BSLH) BSLH
+    &kp TAB              &kp Q                   &ht N7 W       &ht N8 E                   &ht N9 R                &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP           &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
     &kp ESC              &kp A                   &ht N4 S       &ht N5 D                   &ht N6 F                &kp G                  &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
     &kp LSHFT            &kp Z                   &ht N1 X       &ht N2 C                   &ht N3 V                &kp B                  &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &sk RSHFT               &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 CAPS                &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
