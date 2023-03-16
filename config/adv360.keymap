@@ -244,6 +244,16 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+        ht_num: hold_tap_number {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOLD_TAP_NUMBER";
+            #binding-cells = <2>;
+            tapping-term-ms = <125>;
+            quick_tap_ms = <125>;
+            global-quick-tap;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
         ht_cmd_tab: hold_tap_cmd_tab {
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_CMD_TAB";
@@ -335,9 +345,9 @@
         layer_feature_by_right { /* Triggered by the right thumb */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &ht N7 W       &ht N8 E                   &ht N9 R                &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP           &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp A                   &ht N4 S       &ht N5 D                   &ht N6 F                &kp G                  &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &ht N1 X       &ht N2 C                   &ht N3 V                &kp B                  &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &sk RSHFT               &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
+    &kp TAB              &kp Q                   &ht_num N7 W   &ht_num N8 E               &ht_num N9 R            &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP           &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
+    &kp ESC              &kp A                   &ht_num N4 S   &ht_num N5 D               &ht_num N6 F            &kp G                  &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
+    &kp LSHFT            &kp Z                   &ht_num N1 X   &ht_num N2 C               &ht_num N3 V            &kp B                  &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &sk RSHFT               &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &ht N0 CAPS                &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
         };
