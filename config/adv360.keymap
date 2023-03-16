@@ -95,13 +95,6 @@
             bindings
                 = <&macro_tap &kp MINUS &kp GT>;
         };
-        ltgt: ltgt {
-            label = "LTGT";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp LT &kp GT &kp LEFT>;
-        };
 
     }; 
 
@@ -313,15 +306,7 @@
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;            
         };
-        ht_ltgt: hold_tap_ltgt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_LTGT";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick_tap_ms = <200>;
-            flavor = "balanced";
-            bindings = <&ltgt>, <&kp>;
-        };
+
     };
 
     keymap {
@@ -362,7 +347,7 @@
     &ht C_BRI_DN F1      &ht C_BRI_UP F2         &ht LC(UP) F3  &kp F4                     &ht C_REC F5            &kp F6                 &none                                                                                                                      &mo MOD                 &ht C_PREV F7       &ht C_PP F8             &ht C_NEXT F9          &ht C_MUTE F10      &ht C_VOL_DN F11       &ht C_VOL_UP F12
     &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                      &none                   &ht RS(Y) Y         &ht RS(U) U             &ht RS(I) I            &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
     &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &kp N3                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &kp K_PWR               &ht RS(H) H         &td_sk_shft             &hm_mid RSHFT K        &hm RALT L          &hm_pinky RCTRL SEMI   &hm RS(SQT) SQT
-    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &ht LG(Z) M             &ht LG(RS(Z)) COMMA    &ht_ltgt 0 DOT      &ht RS(FSLH) FSLH      &kp RSHFT
+    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &ht LG(Z) M             &ht LG(RS(Z)) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
     &trans               &ht LS(GRAVE) GRAVE     &kp CAPS       &kp DEL                    &kp DEL                                        &kp BSPC                     &none             &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &trans
             >;
         };
