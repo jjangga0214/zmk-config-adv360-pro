@@ -248,8 +248,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_TAP_NUMBER";
             #binding-cells = <2>;
-            tapping-term-ms = <125>;
-            quick_tap_ms = <125>;
+            tapping-term-ms = <100>;
+            quick_tap_ms = <100>;
             global-quick-tap;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
