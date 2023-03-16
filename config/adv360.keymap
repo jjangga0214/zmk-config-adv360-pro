@@ -289,7 +289,7 @@
             tapping-term-ms = <150>; /* faster */
             quick_tap_ms = <150>;
             global-quick-tap;
-            /* no retro-tap; */
+            /* no retro-tap; */ /* Sometimes shift is used only with mouse, not other keys. */ 
             flavor = "balanced";
             bindings = <&kp>, <&kp>;
         };
@@ -322,30 +322,6 @@
             flavor = "balanced";
             bindings = <&ltgt>, <&kp>;
         };
-        ht_ly_ck: hold_tap_layer_check {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_LAYER_CHECK";
-            #binding-cells = <2>;
-            tapping-term-ms = <2000>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-
-        td_sk_shft: tap_dance_sticky_shift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_STICKY_SHIFT";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&hm LEFT_COMMAND J>, <&sk RSHFT>;
-        };
-        td_tab: tap_dance_tab {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_TAB";
-            #binding-cells = <0>;
-            tapping-term-ms = <225>;
-            bindings = <&hm LEFT_COMMAND F>, <&kp TAB>;
-        };
-
     };
 
     keymap {
