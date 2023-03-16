@@ -259,7 +259,7 @@
             quick_tap_ms = <175>;
             global-quick-tap;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&cmd_tab>;
+            bindings = <&cmd_tab>, <&kp>;
         };
         ht_sq: hold_tap_short_quick_tap_ms {
             compatible = "zmk,behavior-hold-tap";
