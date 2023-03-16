@@ -113,127 +113,127 @@
             timeout-ms = <85>;
             key-positions = <31 23>;
             bindings = <&dqts>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_singlequotes {
             timeout-ms = <85>;
             key-positions = <32 23>;
             bindings = <&sqts>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_underscore {
             timeout-ms = <85>;
             key-positions = <31 24>;
             bindings = <&kp UNDERSCORE>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_minus {
             timeout-ms = <85>;
             key-positions = <32 24>;
             bindings = <&kp MINUS>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_pipe {
             timeout-ms = <60>;
             key-positions = <31 25>;
             bindings = <&kp PIPE>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_backslash {
             timeout-ms = <60>;
             key-positions = <32 25>;
             bindings = <&kp BSLH>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_plus {
             timeout-ms = <75>;
             key-positions = <31 43>;
             bindings = <&kp PLUS>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_equal {
             timeout-ms = <75>;
             key-positions = <32 43>;
             bindings = <&kp EQUAL>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_brakets {
             timeout-ms = <50>;
             key-positions = <30 44>;
             bindings = <&brakets>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_braces {
             timeout-ms = <60>;
             key-positions = <31 44>;
             bindings = <&braces>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_parenthesises {
             timeout-ms = <60>;
             key-positions = <32 44>;
             bindings = <&parens>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_tilde {
             timeout-ms = <60>;
             key-positions = <31 45>;
             bindings = <&kp TILDE>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_graves {
             timeout-ms = <60>;
             key-positions = <32 45>;
             bindings = <&graves>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_percent {
             timeout-ms = <75>;
             key-positions = <30 63>;
             bindings = <&kp PRCNT>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_hash {
             timeout-ms = <75>;
             key-positions = <31 63>;
             bindings = <&kp HASH>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_exclamation {
             timeout-ms = <75>;
             key-positions = <32 63>;
             bindings = <&kp EXCL>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_caret {
             timeout-ms = <75>;
             key-positions = <30 64>;
             bindings = <&kp CARET>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_amps {
             timeout-ms = <75>;
             key-positions = <31 64>;
             bindings = <&kp AMPS>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_star {
             timeout-ms = <75>;
             key-positions = <32 64>;
             bindings = <&kp STAR>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_dollar {
             timeout-ms = <75>;
             key-positions = <31 65>;
             bindings = <&kp DLLR>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
         combo_at {
             timeout-ms = <75>;
             key-positions = <32 65>;
             bindings = <&kp AT>;
-            layers = <nFEATURE_BY_L FEATURE_BY_R>;
+            layers = <FEATURE_BY_L FEATURE_BY_R>;
         };
 
     };
