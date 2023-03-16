@@ -308,8 +308,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOLD_PREFERRED_LT";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick_tap_ms = <150>;
+            tapping-term-ms = <160>;
+            quick_tap_ms = <160>;
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;            
         };
@@ -366,7 +366,7 @@
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9        &ht RPAR N0            &ht UNDERSCORE MINUS
     &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))  &kp LG(Z)                  &kp LG(GRAVE)           &ht LS(T) T            &none                                                                                                                      &none                   &kp C_VOL_UP        &ht RS(U) U             &kp UP                 &ht RS(O) O        &kp RS(P)              &ht RS(BSLH) BSLH
     &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp RIGHT_COMMAND       &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT          &kp SEMI               &hm RS(SQT) SQT
-    &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(C) ESC              &ht_cmd_tab LG(V) 0     &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word              &thick_arrow           &thin_arrow        &kp RS(FSLH)           &kp RSHFT
+    &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(C) ESC              &ht_cmd_tab 0 LG(V)     &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word              &thick_arrow           &thin_arrow        &kp RS(FSLH)           &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp CAPS       &kp CAPS                   &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT  &ht RS(RBKT) RBKT      &mo FN
             >;
         };
