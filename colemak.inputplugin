@@ -41,16 +41,32 @@ VALIDINPUTKEY: 0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz
 # Indicate that the mapping definitions have ended with the ENDCHARACTER tag.
 #
 BEGINCHARACTER
-q 土豚
-w 算盤
-f 鮑魚,鰒魚
-p
-g
-j
-l u y ; a r s t d h n e i o z x c v b k m , . 
-
-안녕하세요 ;ㅇ;ㅇ;겨
-
+q ㅂ
+w ㅈ
+f ㄷ
+p ㄱ
+g ㅅ
+j ㅛ
+l ㅕ 
+u ㅑ
+y ㅐ 
+a ㅁ
+r ㄴ
+s ㅇ
+t ㄹ
+d ㅎ
+h ㅗ
+n ㅓ
+e ㅏ
+i ㅣ
+o ㅔ
+z ㅋ
+x ㅌ
+c ㅊ
+v ㅍ
+b ㅠ
+k ㅜ
+m ㅡ
 #
 # ENDCHARACTER: This terminates the mapping definitions and is the last character in the file.
 #
