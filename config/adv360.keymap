@@ -24,6 +24,11 @@
 #define FN 3
 #define MOD 4
 
+&sk {
+    release-after-ms = <3000>;
+    quick-release;
+};
+
 / {
 
      macros {
