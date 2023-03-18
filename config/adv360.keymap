@@ -19,10 +19,11 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT 0
-#define FEATURE_BY_L 1
-#define FEATURE_BY_R 2
-#define FN 3
-#define MOD 4
+#define WHILE_CAPS_LOCK 0
+#define FEATURE_BY_L 2
+#define FEATURE_BY_R 3
+#define FN 4
+#define MOD 5
 
 &sk {
     release-after-ms = <3000>;
@@ -36,6 +37,27 @@
 / {
 
     macros {
+        caps_word_to_wcl: caps_word_to_while_caps_word {
+            label = "caps_word_to_while_caps_word";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &caps_word &tog WHILE_CAPS_LOCK>;
+        };
+        space_twcw: space_toggle_while_caps_word {
+            label = "space_toggle_while_caps_word";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp SPACE &tog WHILE_CAPS_LOCK>;
+        };
+        esc_twcw: esc_toggle_while_caps_word {
+            label = "esc_toggle_while_caps_word";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp ESC &tog WHILE_CAPS_LOCK>;
+        };
         dqts: doublequotes {
             label = "DOUBLEQUOTES";
             compatible = "zmk,behavior-macro";
@@ -459,7 +481,7 @@
 
         layer_default {
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
+    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4            &ht PRCNT N5            &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
     &kp TAB              &kp Q                   &kp W          &kp E                      &kp R                  &kp T                   &none                                                                                                                      &none                   &kp Y               &kp U                   &kp I                  &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
     &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F     &kp G                   &kp N0                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp C_AL_SCREENSAVER    &kp H               &kp J                   &kp K                  &kp L               &kp SEMI              &hm RS(SQT) SQT
     &kp LSHFT            &kp Z                   &kp X          &kp C                      &kp V                  &kp B                   &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp N               &kp M                   &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH     &kp RSHFT
@@ -467,11 +489,21 @@
             >;
         };
 
+        layer_while_caps_word {
+            bindings = <
+    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4            &ht PRCNT N5            &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
+    &kp TAB              &kp Q                   &kp W          &kp E                      &kp R                  &kp T                   &none                                                                                                                      &none                   &kp Y               &kp U                   &kp I                  &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
+    &esc_twcw            &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F     &kp G                   &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp C_AL_SCREENSAVER    &kp H               &kp J                   &kp K                  &kp L               &kp RS(SEMI)          &hm RS(SQT) SQT
+    &kp LSHFT            &kp Z                   &kp X          &kp C                      &kp V                  &kp B                   &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp N               &kp M                   &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH     &kp RSHFT
+    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &kp RIGHT_COMMAND &kp END                              &kp PG_DN               &kp ENTER      &space_twcw                                 &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
+            >;
+        };
+
         layer_feature_by_left { /* Triggered by the left thumb */  
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
     &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))  &kp LG(Z)                  &kp LG(GRAVE)           &kp LG(LS(V))          &none                                                                                                                      &none                   &kp C_VOL_UP        &ht RS(U) U             &kp UP                 &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT           &kp SEMI               &hm RS(SQT) SQT
+    &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT           &kp SEMI               &hm RS(SQT) SQT
     &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(V) LG(C)            &cmd_tab                &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word              &thick_arrow           &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
@@ -481,7 +513,7 @@
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
     &kp TAB              &kp Q                   &ht_num N7 W   &ht_num N8 E               &ht_num N9 R            &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP           &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp A                   &ht_num N4 S   &ht_num N5 D               &ht_num N6 F            &kp G                  &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
+    &kp ESC              &kp A                   &ht_num N4 S   &ht_num N5 D               &ht_num N6 F            &kp G                  &kp N3                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
     &kp LSHFT            &kp Z                   &ht_num N1 X   &ht_num N2 C               &ht_num N3 V            &kp B                  &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht LS(N) N         &sk RSHFT               &kp COMMA              &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &ht_num N0 CAPS            &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
@@ -491,7 +523,7 @@
             bindings = <
     &ht C_BRI_DN F1      &ht C_BRI_UP F2         &ht LC(UP) F3  &kp F4                     &ht C_REC F5            &kp F6                 &none                                                                                                                      &mo MOD                 &ht C_PREV F7       &ht C_PP F8             &ht C_NEXT F9          &ht C_MUTE F10      &ht C_VOL_DN F11       &ht C_VOL_UP F12
     &kp TAB              &ht LS(Q) Q             &ht LS(W) W    &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &none                                                                                                                      &none                   &ht RS(Y) Y         &ht RS(U) U             &ht RS(I) I            &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &kp N3                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp K_PWR               &ht RS(H) H         &ht RS(J) J             &hm_mid RSHFT K        &hm RALT L          &hm_pinky RCTRL SEMI   &hm RS(SQT) SQT
+    &kp ESC              &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F      &ht LS(G) G            &kp N4                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp K_PWR               &ht RS(H) H         &ht RS(J) J             &hm_mid RSHFT K        &hm RALT L          &hm_pinky RCTRL SEMI   &hm RS(SQT) SQT
     &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X    &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &ht LG(Z) M             &ht LG(RS(Z)) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
     &trans               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &none             &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &trans
             >;
