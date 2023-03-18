@@ -19,7 +19,7 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT 0
-#define WHILE_CAPS_LOCK 0
+#define WHILE_CAPS_LOCK 1
 #define FEATURE_BY_L 2
 #define FEATURE_BY_R 3
 #define FN 4
