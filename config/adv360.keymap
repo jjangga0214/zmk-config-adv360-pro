@@ -44,14 +44,14 @@
             bindings
                 = <&macro_tap &caps_word &tog WHILE_CAPS_LOCK>;
         };
-        space_twcw: space_toggle_while_caps_word {
+        space_tog_wcw: space_toggle_while_caps_word {
             label = "space_toggle_while_caps_word";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp SPACE &tog WHILE_CAPS_LOCK>;
         };
-        esc_twcw: esc_toggle_while_caps_word {
+        esc_tog_wcw: esc_toggle_while_caps_word {
             label = "esc_toggle_while_caps_word";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -493,9 +493,9 @@
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4            &ht PRCNT N5            &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
     &kp TAB              &kp Q                   &kp W          &kp E                      &kp R                  &kp T                   &none                                                                                                                      &none                   &kp Y               &kp U                   &kp I                  &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
-    &esc_twcw            &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F     &kp G                   &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp C_AL_SCREENSAVER    &kp H               &kp J                   &kp K                  &kp L               &kp RS(SEMI)          &hm RS(SQT) SQT
+    &esc_tog_wcw         &hm_pinky LCTRL A       &hm LALT S     &hm_mid LSHFT D            &hm LEFT_COMMAND F     &kp G                   &kp N1                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &kp C_AL_SCREENSAVER    &kp H               &kp J                   &kp K                  &kp L               &kp RS(SEMI)          &hm RS(SQT) SQT
     &kp LSHFT            &kp Z                   &kp X          &kp C                      &kp V                  &kp B                   &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp N               &kp M                   &ht RS(COMMA) COMMA    &ht RS(DOT) DOT     &ht RS(FSLH) FSLH     &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &kp RIGHT_COMMAND &kp END                              &kp PG_DN               &kp ENTER      &space_twcw                                 &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
+    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &kp RIGHT_COMMAND &kp END                              &kp PG_DN               &kp ENTER      &space_tog_wcw                              &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
             >;
         };
 
@@ -504,7 +504,7 @@
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
     &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))  &kp LG(Z)                  &kp LG(GRAVE)           &kp LG(LS(V))          &none                                                                                                                      &none                   &kp C_VOL_UP        &ht RS(U) U             &kp UP                 &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
     &kp ESC              &kp LCTRL               &kp LALT       &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &kp LEFT                &kp DOWN               &kp RIGHT           &kp SEMI               &hm RS(SQT) SQT
-    &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(V) LG(C)            &cmd_tab                &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word              &thick_arrow           &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
+    &kp LSHFT            &kp LG(Z)               &kp LG(X)      &ht LG(V) LG(C)            &cmd_tab                &kp BSPC               &none                        &none             &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word_to_wcl       &thick_arrow           &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER      &kp CAPS                   &kp DEL                                        &kp BSPC                     &trans            &kp END                              &kp PG_DN               &kp BSPC       &kp SPACE                                   &kp TAB                 &kp DOWN               &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
         };
