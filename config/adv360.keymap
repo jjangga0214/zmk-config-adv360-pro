@@ -35,7 +35,7 @@
 
 / {
 
-     macros {
+    macros {
         dqts: doublequotes {
             label = "DOUBLEQUOTES";
             compatible = "zmk,behavior-macro";
@@ -478,7 +478,7 @@
         };
 
         layer_feature_by_right { /* Triggered by the right thumb */ /* DOT and COMMA are not hold_tap as they're used for number-related tasks. */
-            bindings = 
+            bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2      &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                               &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8            &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
     &kp TAB              &kp Q                   &ht_num N7 W   &ht_num N8 E               &ht_num N9 R            &kp T                  &none                                                                                                                      &none                   &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP           &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
     &kp ESC              &kp A                   &ht_num N4 S   &ht_num N5 D               &ht_num N6 F            &kp G                  &kp N2                       &kp LCTRL         &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &none                   &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC      &kp RALT            &kp RCTRL              &hm RS(SQT) SQT
