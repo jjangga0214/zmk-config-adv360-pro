@@ -60,49 +60,49 @@
                 = <&macro_tap &kp ESC &tog WHILE_CAPS_LOCK>;
         };
         dqts: doublequotes {
-            label = "DOUBLEQUOTES";
+            label = "doublequotes";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp DQT &kp DQT &kp LEFT>;
         };
         sqts: singlequotes {
-            label = "SINGLEQUOTES";
+            label = "singlequotes";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
         };       
         brakets: brakets {
-            label = "BRAKETS";
+            label = "brakets";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
         };
         braces: braces {
-            label = "BRACES";
+            label = "braces";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
         };
         parens: parenthesises {
-            label = "PARENS";
+            label = "parenthesises";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
         };
         graves: graves {
-            label = "GRAVES";
+            label = "graves";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp GRAVE &kp GRAVE &kp LEFT>;
         };
         cmd_tab: cmd_tab {
-            label = "CMD_TAB";
+            label = "cmd_tab";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -113,7 +113,7 @@
                 , <&macro_release &kp LEFT_COMMAND &kp LEFT_ALT>;
         };
         thick_arrow: thick_arrow {
-            label = "THICK_ARROW";
+            label = "thick_arrow";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -121,14 +121,14 @@
                 , <&macro_tap &kp GT>;
         };
         thin_arrow: thin_arrow {
-            label = "THIN_ARROW";
+            label = "thin_arrow";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp MINUS &kp GT>;
         };
         sleep: sleep {
-            label = "SLEEP";
+            label = "sleep";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -400,7 +400,7 @@
 
         ht: hold_tap_default {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_DEFAULT";
+            label = "hold_tap_default";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <175>;
@@ -410,7 +410,7 @@
         };
         ht_num: hold_tap_number {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_NUMBER";
+            label = "hold_tap_number";
             #binding-cells = <2>;
             tapping-term-ms = <100>;
             quick_tap_ms = <100>;
@@ -420,7 +420,7 @@
         };
         ht_cmd_tab: hold_tap_cmd_tab {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_CMD_TAB";
+            label = "hold_tap_cmd_tab";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <175>;
@@ -430,7 +430,7 @@
         };
         ht_sq: hold_tap_short_quick_tap_ms {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_TAP_SHORT_QUICK_TAP_MS";
+            label = "hold_tap_short_quick_tap_ms";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <100>; /* This short value is to prevent hold resolution when typing fast. */
@@ -440,7 +440,7 @@
         };
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            label = "homerow_mods";
             #binding-cells = <2>;
             tapping-term-ms = <175>;
             quick_tap_ms = <175>;
@@ -451,7 +451,7 @@
         };
         hm_mid: homerow_mods_middle_finger {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_MIDDLE_FINGER";
+            label = "homerow_mods_middle_finger";
             #binding-cells = <2>;
             tapping-term-ms = <150>; /* faster */
             quick_tap_ms = <150>;
@@ -462,7 +462,7 @@
         };
         hm_pinky: homerow_mods_pinky_finger {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS_PINKY_FINGER";
+            label = "homerow_mods_pinky_finger";
             #binding-cells = <2>;
             tapping-term-ms = <275>; /* slower as pinky has less muscular power */
             quick_tap_ms = <200>;
@@ -473,7 +473,7 @@
         };
         hlt: hold_preferred_lt {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOLD_PREFERRED_LT";
+            label = "hold_preferred_lt";
             #binding-cells = <2>;
             tapping-term-ms = <160>;
             quick_tap_ms = <160>;
