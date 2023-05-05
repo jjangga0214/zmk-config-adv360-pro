@@ -139,7 +139,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LG(T)>;
+                = <&macro_tap &kp LC(T)>;
         };
     }; 
 
