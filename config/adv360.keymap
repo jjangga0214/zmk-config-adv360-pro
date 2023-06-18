@@ -134,6 +134,34 @@
             bindings
                 = <&macro_tap &kp LC(LS(LA(LG(F12))))>;
         };
+        tripple_left: tripple_left {
+            label = "tripple_left";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LEFT &kp LEFT &kp LEFT>;
+        };
+        tripple_right: tripple_right {
+            label = "tripple_right";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp RIGHT &kp RIGHT &kp RIGHT>;
+        };
+        tripple_up: tripple_right {
+            label = "tripple_right";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp UP &kp UP &kp UP>;
+        };
+        tripple_down: tripple_down {
+            label = "tripple_down";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
+        };
     }; 
 
     combos {
@@ -536,8 +564,8 @@
         layer_feature_by_left { /* Triggered by the left thumb */  
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8                    &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))   &kp LG(Z)                  &kp LG(GRAVE)           &kp LG(LS(V))          &kp LEFT                                                                                                                          &kp UP                  &kp C_VOL_UP        &ht RS(U) U             &kp UP                         &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp LCTRL               &kp LALT        &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &ht N2 RIGHT                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 DOWN        &kp C_VOL_DN        &kp LEFT                &kp DOWN                       &kp RIGHT           &kp SEMI               &ht RS(SQT) SQT
+    &kp TAB              &ht LG(Q) LG(W)         &kp LG(LS(Z))   &kp LG(Z)                  &kp LG(GRAVE)           &kp LG(LS(V))          &kp LEFT                                                                                                                          &kp UP                  &kp C_VOL_UP        &tripple_up             &kp UP                         &tripple_down       &ht_sq RS(P) P         &ht RS(BSLH) BSLH
+    &kp ESC              &kp LCTRL               &kp LALT        &kp LSHFT                  &kp LEFT_COMMAND        &kp SPACE              &ht N2 RIGHT                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 DOWN        &tripple_left       &kp LEFT                &kp DOWN                       &kp RIGHT           &tripple_right         &ht RS(SQT) SQT
     &kp LSHFT            &kp LG(Z)               &kp LG(X)       &ht LG(V) LG(C)            &cmd_tab                &kp BSPC               &none                        &none                    &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &ht RS(N) N         &caps_word_to_wcl       &thick_arrow                   &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp CAPS                   &kp DEL                                        &trans                       &hlt NUM RIGHT_COMMAND   &kp END                              &kp PG_DN               &hlt NUM ENTER &kp SPACE                                   &kp TAB                 &none                          &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
@@ -554,7 +582,7 @@
         };
 
 
-        layer_numpad { /* Triggered by the right thumb */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
+        layer_numpad { /* Triggered by the left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL F2             &ht AT F3       &ht HASH F4                &ht DLLR F5             &ht PRCNT F6           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET F7        &ht AMPS F8             &ht STAR F9                    &ht LPAR F10        &ht RPAR F11           &ht UNDERSCORE MINUS
     &kp TAB              &kp Q                   &kp KP_N7       &kp KP_N8                  &kp KP_N9               &kp T                  &kp LEFT                                                                                                                          &kp UP                  &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP                   &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
