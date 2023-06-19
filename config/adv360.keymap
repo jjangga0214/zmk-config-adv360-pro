@@ -117,8 +117,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp EQUAL>
-                , <&macro_tap &kp GT>;
+                = <&macro_tap &kp EQUAL &kp GT>
         };
         thin_arrow: thin_arrow {
             label = "thin_arrow";
@@ -148,8 +147,8 @@
             bindings
                 = <&macro_tap &kp RIGHT &kp RIGHT &kp RIGHT>;
         };
-        tripple_up: tripple_right {
-            label = "tripple_right";
+        tripple_up: tripple_up {
+            label = "tripple_up";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
