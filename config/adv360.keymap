@@ -136,7 +136,7 @@
         tripple_left: tripple_left {
             label = "tripple_left";
             compatible = "zmk,behavior-macro";
-            #binding-cells = <0>
+            #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LEFT &kp LEFT &kp LEFT>;
         };
