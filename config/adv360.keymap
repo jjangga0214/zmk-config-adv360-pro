@@ -92,7 +92,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LPAR &kp SPACE &kp SPACE &kp RPAR &kp LEFT &kp LEFT>;
+                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
         };
         graves: graves {
             label = "graves";
