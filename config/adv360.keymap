@@ -78,21 +78,21 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+                = <&macro_tap &kp LBKT &kp SPACE &kp SPACE &kp RBKT &kp LEFT &kp LEFT>;
         };
         braces: braces {
             label = "braces";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LBRC &kp RBRC &kp LEFT>;
+                = <&macro_tap &kp LBRC  &kp SPACE &kp SPACE &kp RBRC &kp LEFT &kp LEFT>;
         };
         parens: parenthesises {
             label = "parenthesises";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+                = <&macro_tap &kp LPAR &kp SPACE &kp SPACE &kp RPAR &kp LEFT &kp LEFT>;
         };
         graves: graves {
             label = "graves";
