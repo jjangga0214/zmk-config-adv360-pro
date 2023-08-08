@@ -166,7 +166,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp RCTRL &kp SPACE>;
+                = <&macro_press &kp RCTRL>
+                , <&macro_tap &kp SPACE>
+                , <&macro_release &kp RCTRL>;
         };
     }; 
 
