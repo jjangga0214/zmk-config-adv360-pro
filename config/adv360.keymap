@@ -599,7 +599,6 @@
             >;
         };
 
-
         layer_numpad { /* Triggered by the left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL F2             &ht AT F3       &ht HASH F4                &ht DLLR F5             &ht PRCNT F6           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET F7        &ht AMPS F8             &ht STAR F9                    &ht LPAR F10        &ht RPAR F11           &ht UNDERSCORE MINUS
