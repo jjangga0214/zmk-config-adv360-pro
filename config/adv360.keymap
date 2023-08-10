@@ -310,16 +310,16 @@
             layers = <FEATURE_BY_L NUM>;
         };
 
-        combo_doublequotes_by_r {
-            timeout-ms = <105>;
-            key-positions = <31 23>;
-            bindings = <&dqts>;
-            layers = <FEATURE_BY_R>;
-        };
         combo_singlequotes_by_r {
             timeout-ms = <105>;
-            key-positions = <32 23>;
+            key-positions = <31 23>;
             bindings = <&sqts>;
+            layers = <FEATURE_BY_R>;
+        };
+        combo_doublequotes_by_r {
+            timeout-ms = <105>;
+            key-positions = <32 23>;
+            bindings = <&dqts>;
             layers = <FEATURE_BY_R>;
         };
         combo_underscore_by_r {
