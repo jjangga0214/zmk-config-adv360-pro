@@ -183,16 +183,16 @@
         
         compatible = "zmk,combos";
 
-        combo_doublequotes {
-            timeout-ms = <85>;
-            key-positions = <31 23>;
-            bindings = <&dqts>;
-            layers = <FEATURE_BY_L NUM>;
-        };
         combo_singlequotes {
             timeout-ms = <85>;
-            key-positions = <32 23>;
+            key-positions = <31 23>;
             bindings = <&sqts>;
+            layers = <FEATURE_BY_L NUM>;
+        };
+        combo_doublequotes {
+            timeout-ms = <85>;
+            key-positions = <32 23>;
+            bindings = <&dqts>;
             layers = <FEATURE_BY_L NUM>;
         };
         combo_underscore {
