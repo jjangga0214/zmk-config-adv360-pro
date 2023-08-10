@@ -161,6 +161,13 @@
             bindings
                 = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
         };
+        tripple_bspc: tripple_bspc {
+            label = "tripple_bspc";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp BSPC &kp BSPC &kp BSPC>;
+        };
         auto_suggestion: auto_suggestion {
             label = "auto_suggestion";
             compatible = "zmk,behavior-macro";
@@ -592,8 +599,8 @@
         layer_feature_by_right { /* Triggered by the right thumb */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8                    &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &ht_num KP_N7 W &ht_num KP_N8 E            &ht_num KP_N9 R         &kp T                  &kp LEFT                                                                                                                          &kp LG(Q)               &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP                   &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp A                   &ht_num KP_N4 S &ht_num KP_N5 D            &ht_num KP_N6 F         &kp G                  &ht N3 LG(R)                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 LG(W)       &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC              &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
+    &kp TAB              &kp Q                   &ht_num KP_N7 W &ht_num KP_N8 E            &ht_num KP_N9 R         &kp T                  &kp LEFT                                                                                                                          &kp LG(Q)               &kp Y               &kp U                   &kp C_BRI_UP                   &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
+    &kp ESC              &kp A                   &ht_num KP_N4 S &ht_num KP_N5 D            &ht_num KP_N6 F         &kp G                  &ht N3 LG(R)                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 LG(W)       &tripple_bspc       &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC              &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
     &kp LSHFT            &kp Z                   &ht_num KP_N1 X &ht_num KP_N2 C            &ht_num KP_N3 V         &kp B                  &none                        &none                    &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp LG(S)           &sk RSHFT               &ht_num_sub RS(COMMA) COMMA    &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &ht_num KP_N0 CAPS         &kp DEL                                        &kp BSPC                     &hlt NUM RIGHT_COMMAND   &kp END                              &kp PG_DN               &kp ENTER      &trans                                      &kp TAB                 &none                          &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
@@ -602,9 +609,9 @@
         layer_numpad { /* Triggered by the left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
             bindings = <
     &ht PLUS EQUAL       &ht EXCL F2             &ht AT F3       &ht HASH F4                &ht DLLR F5             &ht PRCNT F6           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET F7        &ht AMPS F8             &ht STAR F9                    &ht LPAR F10        &ht RPAR F11           &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp KP_N7       &kp KP_N8                  &kp KP_N9               &kp T                  &kp LEFT                                                                                                                          &kp LG(Q)               &kp C_VOL_UP        &kp C_BRI_DN            &kp C_BRI_UP                   &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp ESC              &kp A                   &kp KP_N4       &kp KP_N5                  &kp KP_N6               &kp G                  &ht N3 LG(R)                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 LG(W)       &kp C_VOL_DN        &hm LEFT_COMMAND BSPC   &hm_mid RSHFT ESC              &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &kp KP_N1       &kp KP_N2                  &kp KP_N3               &kp B                  &none                        &none                    &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp LG(S)           &sk RSHFT               &ht_num_sub RS(COMMA) COMMA    &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
+    &kp TAB              &kp Q                   &kp KP_N7       &kp KP_N8                  &kp KP_N9               &kp T                  &kp LEFT                                                                                                                          &kp LG(Q)               &kp Y               &kp U                   &kp I                          &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
+    &kp ESC              &kp A                   &kp KP_N4       &kp KP_N5                  &kp KP_N6               &kp G                  &ht N3 LG(R)                 &kp LCTRL                &kp LALT         &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 LG(W)       &kp C_VOL_UP        &kp C_BRI_UP            &auto_suggestion               &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
+    &kp LSHFT            &kp Z                   &kp KP_N1       &kp KP_N2                  &kp KP_N3               &kp B                  &none                        &none                    &kp HOME         &none   &none       &kp PG_UP               &none          &none                   &kp C_VOL_DN        &kp C_BRI_DN            &kp LG(A)                      &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
     &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp KP_N0                  &kp DEL                                        &hlt FEATURE_BY_L BSPC       &kp RIGHT_COMMAND        &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE                     &kp TAB                 &none                          &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
             >;
         };
