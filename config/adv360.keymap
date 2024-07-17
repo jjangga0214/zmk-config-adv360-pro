@@ -62,9 +62,9 @@
             #binding-cells = <2>;
             bindings
                 = <&macro_param_1to1>
-                , <&macro_tab &tog MACRO_PLACEHOLDER>;
+                , <&macro_tab &tog MACRO_PLACEHOLDER>
                 , <&macro_param_2to1>
-                , <&macro_tab &kp MACRO_PLACEHOLDER>
+                , <&macro_tab &kp MACRO_PLACEHOLDER>;
         };
         space_uncap: space_uncap {
             label = "space_uncap";
