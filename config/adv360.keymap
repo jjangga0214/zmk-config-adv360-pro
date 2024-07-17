@@ -250,9 +250,9 @@
             #binding-cells = <2>;  /* 2 params macro */
             bindings
                 = <&macro_param_1to2>
-                , <&macro_tab &bt BT_SEL MACRO_PLACEHOLDER>
+                , <&bt BT_SEL MACRO_PLACEHOLDER>
                 , <&macro_param_2to1>
-                , <&macro_tab &to MACRO_PLACEHOLDER>;
+                , <&to MACRO_PLACEHOLDER>;
         };        
     }; 
 
