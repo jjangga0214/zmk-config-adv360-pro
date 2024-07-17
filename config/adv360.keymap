@@ -250,35 +250,35 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
+                = <&macro_tap &bt BT_SEL 0 &to DEFAULT_WIN>;
         };        
         bt_to_1: bt_to_1 {
             label = "bt_to_1";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
+                = <&macro_tap &bt BT_SEL 1 &to DEFAULT_WIN>;
         };        
         bt_to_2: bt_to_2 {
             label = "bt_to_2";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
+                = <&macro_tap &bt BT_SEL 2 &to DEFAULT_WIN>;
         };        
         bt_to_3: bt_to_3 {
             label = "bt_to_3";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT>;
+                = <&macro_tap &bt BT_SEL 3 &to DEFAULT>;
         };        
         bt_to_4: bt_to_4 {
             label = "bt_to_4";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT>;
+                = <&macro_tap &bt BT_SEL 4 &to DEFAULT>;
         };                                        
     }; 
 
