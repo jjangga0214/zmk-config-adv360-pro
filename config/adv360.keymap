@@ -19,12 +19,21 @@
 #include <dt-bindings/zmk/backlight.h>
 
 #define DEFAULT 0
-#define WHILE_CAPS_LOCK 1
-#define FEATURE_BY_L 2
-#define FEATURE_BY_R 3
+#define CAPS 1
+#define FEAT_L 2
+#define FEAT_R 3
 #define NUM 4
 #define FN 5
-#define MOD 6
+#define DEFAULT_WIN 6
+#define CAPS_WIN 7
+#define CTRL_WIN 8
+#define ALT_WIN 9
+#define META_WIN 10
+#define FEAT_L_WIN 11
+#define FEAT_R_WIN 12
+#define NUM_WIN 13
+#define FN_WIN 14
+#define MOD 15
 
 &sk {
     release-after-ms = <3000>;
@@ -38,26 +47,46 @@
 / {
 
     macros {
-        caps_word_to_wcl: caps_word_to_while_caps_word {
-            label = "caps_word_to_while_caps_word";
+        caps: caps {
+            label = "caps";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_tap &caps_word>
+                , <&macro_param_1to1>
+                , <&tog MACRO_PLACEHOLDER>;
+        };       
+        uncaps: uncaps {
+            label = "uncaps";
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_tab &tog MACRO_PLACEHOLDER>;
+                , <&macro_param_2to1>
+                , <&macro_tab &kp MACRO_PLACEHOLDER>
+        };
+        space_uncap: space_uncap {
+            label = "space_uncap";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings
+                = <&macro_param_1to1>
+                , <&macro_tab &uncaps MACRO_PLACEHOLDER SPACE>;
+        };  
+        space_tog_wcw_win: space_toggle_while_caps_word_win {
+            label = "space_toggle_while_caps_word_win";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &caps_word &tog WHILE_CAPS_LOCK>;
-        };
-        space_tog_wcw: space_toggle_while_caps_word {
-            label = "space_toggle_while_caps_word";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp SPACE &tog WHILE_CAPS_LOCK>;
-        };
+                = <&macro_tap &kp SPACE &tog CAPS_WIN>;
+        };        
         esc_tog_wcw: esc_toggle_while_caps_word {
             label = "esc_toggle_while_caps_word";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp ESC &tog WHILE_CAPS_LOCK>;
+                = <&macro_tap &kp ESC &tog CAPS>;
         };
         dqts: doublequotes {
             label = "doublequotes";
@@ -85,7 +114,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LBRC  &kp SPACE &kp SPACE &kp RBRC &kp LEFT &kp LEFT>;
+                = <&macro_tap &kp LBRC &kp SPACE &kp SPACE &kp RBRC &kp LEFT &kp LEFT>;
         };
         parens: parenthesises {
             label = "parenthesises";
@@ -112,6 +141,15 @@
                 , <&macro_press &kp LEFT_ALT>
                 , <&macro_release &kp LCMD &kp LEFT_ALT>;
         };
+        alt_tab_win: alt_tab_win {
+            label = "alt_tab_win";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tab &kp LA(LS(TAB))>
+                , <&macro_pause_for_release>
+                , <&macro_tab &kp ENTER>;
+        };        
         thick_arrow: thick_arrow {
             label = "thick_arrow";
             compatible = "zmk,behavior-macro";
@@ -133,6 +171,15 @@
             bindings
                 = <&macro_tap &kp LC(LS(LA(LG(F12))))>;
         };
+        sleep_win: sleep_win {
+            label = "sleep_win";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp LMETA>
+                , <&macro_tap &kp X &kp U &kp S>
+                , <&macro_release &kp LMETA>;
+        };        
         tripple_left: tripple_left {
             label = "tripple_left";
             compatible = "zmk,behavior-macro";
@@ -161,32 +208,64 @@
             bindings
                 = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
         };
+        ctrl_tripple_left: ctrl_tripple_left {
+            label = "tripple_left";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(LEFT) &kp LC(LEFT) &kp LC(LEFT)>;
+        };
+        ctrl_tripple_right: ctrl_tripple_right {
+            label = "tripple_right";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(RIGHT) &kp LC(RIGHT) &kp LC(RIGHT)>;
+        };
+        ctrl_tripple_up: ctrl_tripple_up {
+            label = "tripple_up";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(UP) &kp LC(UP) &kp LC(UP)>;
+        };
+        ctrl_tripple_down: ctrl_tripple_down {
+            label = "tripple_down";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &kp LC(DOWN) &kp LC(DOWN) &kp LC(DOWN)>;
+        };        
         tripple_bspc: tripple_bspc {
             label = "tripple_bspc";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp BSPC &kp BSPC &kp BSPC>;
-        };
+        };    
         auto_suggestion: auto_suggestion {
             label = "auto_suggestion";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp RCTRL>
-                , <&macro_tap &kp SPACE>
-                , <&macro_release &kp RCTRL>;
-        };
+                = <&macro_press &kp RC(SPACE)>;
+        };                
         iaesiiyw: iaesiiyw {
             label = "iaesiiyw@gmail.com";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp L &kp A &kp K &kp D &kp L &kp L &kp O &kp W>
-                , <&macro_press &kp LSHFT>
-                , <&macro_tap &kp N2>
-                , <&macro_release &kp LSHFT>
-                , <&macro_tap &kp T &kp M &kp A &kp L &kp U &kp DOT &kp C &kp SEMI &kp M>;
+                = <&macro_tap &kp L &kp A &kp K &kp D &kp L &kp L &kp O &kp W &kp LS(N2) &kp T &kp M &kp A &kp L &kp U &kp DOT &kp C &kp SEMI &kp M>;
+        };
+        bt_lt: bl_lt {
+            label = "bl_lt";
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;  /* 2 params macro */
+            bindings
+                = <&macro_param_1to2>
+                , <&macro_tab &bt BT_SEL MACRO_PLACEHOLDER>
+                , <&macro_param_2to1>
+                , <&macro_tab &to MACRO_PLACEHOLDER>;
         };        
     }; 
 
@@ -198,254 +277,254 @@
             timeout-ms = <85>;
             key-positions = <31 23>;
             bindings = <&sqts>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_doublequotes {
             timeout-ms = <85>;
             key-positions = <32 23>;
             bindings = <&dqts>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_underscore {
             timeout-ms = <85>;
             key-positions = <31 24>;
             bindings = <&kp UNDERSCORE>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_minus {
             timeout-ms = <85>;
             key-positions = <32 24>;
             bindings = <&kp MINUS>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_pipe {
             timeout-ms = <60>;
             key-positions = <31 25>;
             bindings = <&kp PIPE>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_backslash {
             timeout-ms = <60>;
             key-positions = <32 25>;
             bindings = <&kp BSLH>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_plus {
             timeout-ms = <75>;
             key-positions = <31 43>;
             bindings = <&kp PLUS>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_equal {
             timeout-ms = <75>;
             key-positions = <32 43>;
             bindings = <&kp EQUAL>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_brakets {
             timeout-ms = <50>;
             key-positions = <30 44>;
             bindings = <&brakets>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_braces {
             timeout-ms = <60>;
             key-positions = <31 44>;
             bindings = <&braces>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_parenthesises {
             timeout-ms = <60>;
             key-positions = <32 44>;
             bindings = <&parens>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_tilde {
             timeout-ms = <60>;
             key-positions = <31 45>;
             bindings = <&kp TILDE>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_graves {
             timeout-ms = <60>;
             key-positions = <32 45>;
             bindings = <&graves>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_percent {
             timeout-ms = <75>;
             key-positions = <30 63>;
             bindings = <&kp PRCNT>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_hash {
             timeout-ms = <75>;
             key-positions = <31 63>;
             bindings = <&kp HASH>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_exclamation {
             timeout-ms = <75>;
             key-positions = <32 63>;
             bindings = <&kp EXCL>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_caret {
             timeout-ms = <75>;
             key-positions = <30 64>;
             bindings = <&kp CARET>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_amps {
             timeout-ms = <75>;
             key-positions = <31 64>;
             bindings = <&kp AMPS>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_star {
             timeout-ms = <75>;
             key-positions = <32 64>;
             bindings = <&kp STAR>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_dollar {
             timeout-ms = <75>;
             key-positions = <31 65>;
             bindings = <&kp DLLR>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_at {
             timeout-ms = <75>;
             key-positions = <32 65>;
             bindings = <&kp AT>;
-            layers = <FEATURE_BY_L NUM>;
+            layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
 
         combo_singlequotes_by_r {
             timeout-ms = <105>;
             key-positions = <31 23>;
             bindings = <&sqts>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_doublequotes_by_r {
             timeout-ms = <105>;
             key-positions = <32 23>;
             bindings = <&dqts>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_underscore_by_r {
             timeout-ms = <105>;
             key-positions = <31 24>;
             bindings = <&kp UNDERSCORE>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_minus_by_r {
             timeout-ms = <105>;
             key-positions = <32 24>;
             bindings = <&kp MINUS>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_pipe_by_r {
             timeout-ms = <105>;
             key-positions = <31 25>;
             bindings = <&kp PIPE>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_backslash_by_r {
             timeout-ms = <105>;
             key-positions = <32 25>;
             bindings = <&kp BSLH>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_plus_by_r {
             timeout-ms = <75>;
             key-positions = <31 43>;
             bindings = <&kp PLUS>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_equal_by_r {
             timeout-ms = <75>;
             key-positions = <32 43>;
             bindings = <&kp EQUAL>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_brakets_by_r {
             timeout-ms = <75>;
             key-positions = <30 44>;
             bindings = <&brakets>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_braces_by_r {
             timeout-ms = <75>;
             key-positions = <31 44>;
             bindings = <&braces>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_parenthesises_by_r {
             timeout-ms = <75>;
             key-positions = <32 44>;
             bindings = <&parens>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_tilde_by_r {
             timeout-ms = <105>;
             key-positions = <31 45>;
             bindings = <&kp TILDE>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_graves_by_r {
             timeout-ms = <105>;
             key-positions = <32 45>;
             bindings = <&graves>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_percent_by_r {
             timeout-ms = <105>;
             key-positions = <30 63>;
             bindings = <&kp PRCNT>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_hash_by_r {
             timeout-ms = <105>;
             key-positions = <31 63>;
             bindings = <&kp HASH>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_exclamation_by_r {
             timeout-ms = <105>;
             key-positions = <32 63>;
             bindings = <&kp EXCL>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_caret_by_r {
             timeout-ms = <105>;
             key-positions = <30 64>;
             bindings = <&kp CARET>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_amps_by_r {
             timeout-ms = <105>;
             key-positions = <31 64>;
             bindings = <&kp AMPS>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_star_by_r {
             timeout-ms = <105>;
             key-positions = <32 64>;
             bindings = <&kp STAR>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_dollar_by_r {
             timeout-ms = <105>;
             key-positions = <31 65>;
             bindings = <&kp DLLR>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_at_by_r {
             timeout-ms = <105>;
             key-positions = <32 65>;
             bindings = <&kp AT>;
-            layers = <FEATURE_BY_R>;
+            layers = <FEAT_R FEAT_R_WIN>;
         };
     };
 
@@ -553,14 +632,14 @@
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
         };
-        hlt_space_tog_wcw: hlt_space_tog_wcw {
+        hlt_space_uncap: hlt_space_uncap {
             compatible = "zmk,behavior-hold-tap";
-            label = "hlt_space_tog_wcw";
+            label = "hlt_space_uncap";
             #binding-cells = <2>;
             tapping-term-ms = <160>;
             flavor = "hold-preferred";
-            bindings = <&mo>, <&space_tog_wcw>;            
-        };
+            bindings = <&mo>, <&space_uncap>;     
+        };     
         ht_sleep: ht_sleep {
             compatible = "zmk,behavior-hold-tap";
             label = "ht_sleep";
@@ -570,6 +649,15 @@
             flavor = "tap-preferred";
             bindings = <&sleep>, <&kp>;            
         };
+        ht_sleep_win: ht_sleep_win {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ht_sleep";
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick_tap_ms = <175>;
+            flavor = "tap-preferred";
+            bindings = <&sleep_win>, <&kp>;            
+        };        
     };
 
     keymap {
@@ -577,71 +665,161 @@
 
         layer_default {
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4            &ht PRCNT N5            &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8                     &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp W           &kp E                      &kp R                  &kp T                   &kp N0                        /* LG(P) */              /* LG(LS(P)) */                                              /* LG(T) */   &kp LG(Q)               &kp Y               &kp U                   &kp I                           &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
-    &kp CAPS             &hm_pinky LCTRL A       &hm LALT S      &hm_mid LSHFT D            &hm LCMD F             &kp G                   &kp DEL                      &kp LG(R)                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp LG(F)      &ht_sleep 0 LG(W)       &kp H               &kp J                   &kp K                           &kp L               &kp SEMI              &ht RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &kp X           &kp C                      &kp V                  &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &kp N               &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT     &ht RS(FSLH) FSLH     &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp LG(C)                  &kp LG(V)                                      &hlt FEATURE_BY_L BSPC       &hlt NUM RCMD            &kp LG(LS(E)) /* LG(LS(F)) */        &kp LG(E) /* LG(F) */   &hlt NUM ENTER &hlt FEATURE_BY_R SPACE                     &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LG(P) */              /* LG(LS(P)) */                                              /* LG(T) */       &kp LG(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sqSu RS(P) P            &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LCTRL A           &hm LALT S                 &hm_mid LSHFT D            &hm LCMD F                   &kp G                   &kp DEL                      &kp LG(R)                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp LG(F)          &ht_sleep 0 LG(W)         &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LG(C)                  &kp LG(V)                                            &hlt FEAT_L BSPC             &hlt NUM RCMD            &kp LG(LS(E)) /* LG(LS(F)) */        &kp LG(E) /* LG(F) */   &hlt NUM ENTER     &hlt FEAT_R SPACE                              &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >;  
+        };  
+    
+        layer_while_caps_word {     
+            bindings = <    
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LG(P) */              /* LG(LS(P)) */                                              /* LG(T) */       &kp LG(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LCTRL A           &hm LALT S                 &hm_mid LSHFT D            &hm LCMD F                   &kp G                   &kp DEL                      &kp LG(R)                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp LG(F)          &ht_sleep 0 LG(W)         &kp H                &kp J                   &kp K                           &kp L                     &kp RS(SEMI)                &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LG(C)                  &kp LG(V)                                            &hlt FEAT_L BSPC             &hlt NUM RCMD            &kp LG(LS(F)) /* LG(LS(F)) */        &kp LG(F)               &hlt NUM ENTER     &hlt_space_uncap FEAT_R CAPS                   &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >; 
+        }; 
+ 
+        layer_feature_by_left { /* Triggered by the left thumb */   
+            bindings = < 
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &tripple_up                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp LG(A)                  &kp LG(GRAVE)                &kp LG(LS(V))           &to DEFAULT                                            /* LG(LS(P)) */                                                                &kp LG(Q)                 &auto_suggestion     &thick_arrow            &kp UP                          &thin_arrow               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp LCTRL                   &kp LALT                   &kp LSHFT                  &kp LCMD                     &kp LG(Z)               &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL          &ht_sleep 0 LG(W)         &tripple_left        &kp LEFT                &kp DOWN                        &kp RIGHT                 &tripple_right              &ht RS(SQT) SQT
+                &kp LSHFT                &kp LG(Z)                   &kp LG(X)                  &ht_cp LG(V) LG(C)         &cmd_tab                     &kp LG(LS(Z))           &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &ht RS(N) N          &caps CAPS              &tripple_down                   &thin_arrow               &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LG(C)                  &kp LG(V)                                            &trans                       &hlt NUM RCMD            &kp END                              &kp PG_DN               &hlt NUM ENTER     &kp SPACE                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >;  
+        };  
+    
+        layer_feature_by_right { /* Triggered by the right thumb */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */  
+            bindings = <    
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &ht_num KP_N7 W            &ht_num KP_N8 E            &ht_num KP_N9 R              &kp T                   &to DEFAULT                                            /* LG(LS(P)) */                                                                &kp LG(Q)                 &kp Y                &kp U                   &kp C_BRI_UP                    &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp A                       &ht_num KP_N4 S            &ht_num KP_N5 D            &ht_num KP_N6 F              &kp G                   &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL          &ht_sleep 0 LG(W)         &tripple_bspc        &hm LCMD BSPC           &hm_mid RSHFT ESC               &kp RALT                  &kp RCTRL                   &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &ht_num KP_N1 X            &ht_num KP_N2 C            &ht_num KP_N3 V              &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp LG(S)            &sk RSHFT               &ht_num_sub RS(COMMA) COMMA     &kp DOT                   &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &ht_num KP_N0 CAPS         &kp LG(V)                                            &hlt FEAT_L BSPC             &hlt NUM RCMD            &kp END                              &kp PG_DN               &kp ENTER          &trans                                         &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >;          
+        };          
+    
+        layer_numpad { /* Triggered by the left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */          
+            bindings = <            
+                &ht PLUS EQUAL           &ht EXCL F2                 &ht AT F3                  &ht HASH F4                &ht DLLR F5                  &ht PRCNT F6            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET F7         &ht AMPS F8             &ht STAR F9                     &ht LPAR F10              &ht RPAR F11                &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp KP_N7                  &kp KP_N8                  &kp KP_N9                    &kp T                   &to DEFAULT                                            /* LG(LS(P)) */                                                                &kp LG(Q)                 &kp Y                &kp U                   &kp LS(LA(E)) /*vscode format*/ &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp A                       &kp KP_N4                  &kp KP_N5                  &kp KP_N6                    &kp G                   &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL          &ht_sleep 0 LG(W)         &kp C_VOL_UP         &kp C_BRI_UP            &auto_suggestion                &kp RALT                  &kp RCTRL                   &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp KP_N1                  &kp KP_N2                  &kp KP_N3                    &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp C_VOL_DN         &kp C_BRI_DN            &kp LG(A)                       &kp DOT                   &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp KP_N0                  &kp LG(V)                                            &hlt FEAT_L BSPC             &kp RCMD                 &kp END                              &kp PG_DN               &kp ENTER          &hlt FEAT_R SPACE                              &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >;          
+        };          
+
+        layer_fn {          
+            bindings = <                    
+                &ht C_BRI_DN F1          &ht C_BRI_UP F2             &ht LC(UP) F3              &kp F4                     &ht C_REC F5                 &kp F6                  &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht C_PREV F7        &ht C_PP F8             &ht C_NEXT F9                   &ht C_MUTE F10            &ht C_VOL_DN F11            &ht C_VOL_UP F12
+                &kp TAB                  &ht LS(Q) Q                 &ht LS(W) W                &ht LS(E) E                &ht LS(R) R                  &ht LS(T) T             &to DEFAULT                                            /* LG(LS(P)) */                                                                &kp UP                    &ht RS(Y) Y          &ht RS(U) U             &ht RS(I) I                     &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LCTRL A           &hm LALT S                 &hm_mid LSHFT D            &hm LCMD F                   &ht LS(G) G             &ht N3 LG(R)                 &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL          &ht_sleep 0 DOWN          &ht RS(H) H          &ht LCMD J              &hm_mid RSHFT K                 &hm RALT L                &hm_pinky RCTRL SEMI        &ht RS(SQT) SQT
+                &kp LSHFT                &ht LG(Z) Z                 &ht LG(X) X                &ht LG(C) C                &ht LG(V) V                  &ht LS(B) B             &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &ht RS(N) N          &ht RS(M) M             &ht_num_sub RS(COMMA) COMMA     &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &trans                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LG(C)                  &kp LG(V)                                            &kp BSPC                     &hlt NUM RCMD            &kp END                              &kp PG_DN               &kp ENTER          &kp SPACE                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &trans
+            >; 
+        }; 
+ 
+        layer_default_win { 
+            bindings = < 
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */       &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sqSu RS(P) P            &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LMETA A           &hlt ALT_WIN S             &hm_mid LSHFT D            &hlt CTRL_WIN F              &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LC(LS(E)) /* LC(LS(F)) */        &kp LC(E) /* LC(F) */   &hlt NUM ENTER     &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+            >; 
+        }; 
+ 
+        layer_while_caps_word_win { 
+            bindings = < 
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */       &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LMETA A           &hlt ALT_WIN S             &hm_mid LSHFT D            &hlt CTRL_WIN F              &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp RS(SEMI)                &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LC(LS(F)) /* LC(LS(F)) */        &kp LC(F)               &hlt NUM ENTER     &hlt_space_uncap FEAT_R_WIN CAPS_WIN           &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
             >;
         };
 
-        layer_while_caps_word {
+        layer_ctrl_win { /* Triggered by lctrl. LC(BSPC) -> DEL, LC(SPC) -> LG(S), LC(LEFT) -> HOME, LC(RIGHT) -> END, LC(UP) -> PG_UP, LC(DOWN) -> PG_DN  */  
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4            &ht PRCNT N5            &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8                     &ht LPAR N9         &ht RPAR N0           &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp W           &kp E                      &kp R                  &kp T                   &kp N1                        /* LG(P) */              /* LG(LS(P)) */                                              /* LG(T) */   &kp LG(Q)               &kp Y               &kp U                   &kp I                           &kp O               &ht_sq RS(P) P        &ht RS(BSLH) BSLH
-    &kp CAPS             &hm_pinky LCTRL A       &hm LALT S      &hm_mid LSHFT D            &hm LCMD F             &kp G                   &kp DEL                      &kp LG(R)                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp LG(F)      &ht_sleep 0 LG(W)       &kp H               &kp J                   &kp K                           &kp L               &kp RS(SEMI)          &ht RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &kp X           &kp C                      &kp V                  &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &kp N               &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT     &ht RS(FSLH) FSLH     &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp LG(C)                  &kp LG(V)                                      &hlt FEATURE_BY_L BSPC       &hlt NUM RCMD            &kp LG(LS(F)) /* LG(LS(F)) */        &kp LG(F)               &hlt NUM ENTER &hlt_space_tog_wcw FEATURE_BY_R 0           &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT     &mo FN
+                &ht LC(PLUS) LC(EQUAL)   &ht LC(EXCL) LC(N1)         &ht LC(AT) LC(N2)          &ht LC(HASH) LC(N3)        &ht LC(DLLR) LC(N4)          &ht LC(PRCNT) LC(N5)    &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht LC(CARET) LC(N6) &ht LC(AMPS) LC(N7)    &ctrl_tripple_up                &ht LC(LPAR) LC(N9)       &ht LC(RPAR) LC(N0)         &ht LC(UNDERSCORE) LC(MINUS)
+                &kp LC(TAB)              &kp LC(Q)                   &kp LC(W)                  &kp LC(A)                  &kp LC(GRAVE)                &kp LC(LS(V))           &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(LC(Q))             &auto_suggestion     &thick_arrow           &kp PG_UP                       &thin_arrow               &ht_sq LC(RS(P)) LC(P)      &ht LC(RS(BSLH)) LC(BSLH)
+                &kp LC(CAPS)             &hm_pinky LC(LMETA) LC(A)   &hm LC(LALT) LC(S)         &hm_mid LC(LSHFT) LC(D)    &trans                       &kp LC(Z)               &kp LC(DEL)                  &kp LC(LMETA)            &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp LC(RMETA)      &ht_sleep_win 0 LC(LC(W)) &ctrl_tripple_left   &kp HOME               &kp PG_DN                       &kp END                   &ctrl_tripple_right         &ht LC(RS(SQT)) LC(SQT)
+                &kp LC(LSHFT)            &kp LC(Z)                   &kp LC(X)                  &ht_cp LC(V) LC(C)         &alt_tab_win                 &kp LC(LS(Z))           &none                        &none                    &kp LC(HOME)     &none   &none       &iaesiiyw               &none              &none                     &ht LC(RS(N)) LC(N)  &caps CAPS_WIN         &ctrl_tripple_down              &thin_arrow               &ht LC(RS(FSLH)) LC(FSLH)   &kp LC(RSHFT)
+                &mo FN                   &ht LC(LS(GRAVE)) LC(GRAVE) &kp LC(ENTER)              &kp LC(C)                  &kp LC(V)                                            &kp DEL                      &hlt NUM LC(RALT)        &kp LC(END)                          &kp LC(PG_DN)           &hlt NUM LC(ENTER) &kp LG(S)                                      &kp LC(TAB)            &none                           &ht LC(RS(LBKT)) LC(LBKT) &ht LC(RS(RBKT)) LC(RBKT)   &mo FN_WIN
             >;
-        };
+        };            
 
-        layer_feature_by_left { /* Triggered by the left thumb */  
+        layer_alt_win { /* Triggered by lalt. LA(LEFT, RIGHT, UP, DOWN) -> LG(LEFT, RIGHT, UP, DOWN) */  
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &tripple_up                     &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp W           &kp LG(A)                  &kp LG(GRAVE)           &kp LG(LS(V))          &kp N2                                                 /* LG(LS(P)) */                                                            &kp LG(Q)               &auto_suggestion    &thick_arrow            &kp UP                          &thin_arrow         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp CAPS             &kp LCTRL               &kp LALT        &kp LSHFT                  &kp LCMD                &kp LG(Z)              &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL      &ht_sleep 0 LG(W)       &tripple_left       &kp LEFT                &kp DOWN                        &kp RIGHT           &tripple_right         &ht RS(SQT) SQT
-    &kp LSHFT            &kp LG(Z)               &kp LG(X)       &ht_cp LG(V) LG(C)         &cmd_tab                &kp LG(LS(Z))          &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &ht RS(N) N         &caps_word_to_wcl       &tripple_down                   &thin_arrow         &ht RS(FSLH) FSLH      &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp LG(C)                  &kp LG(V)                                      &trans                       &hlt NUM RCMD            &kp END                              &kp PG_DN               &hlt NUM ENTER &kp SPACE                                   &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
+                &ht LA(PLUS) LA(EQUAL)   &ht LA(EXCL) LA(N1)         &ht LA(AT) LA(N2)          &ht LA(HASH) LA(N3)        &ht LA(DLLR) LA(N4)          &ht LA(PRCNT) LA(N5)    &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht LA(CARET) LA(N6) &ht LA(AMPS) LA(N7)    &ctrl_tripple_up                &ht LA(LPAR) LA(N9)       &ht LA(RPAR) LA(N0)         &ht LA(UNDERSCORE) LA(MINUS)
+                &kp LA(TAB)              &kp LA(Q)                   &kp LA(W)                  &kp LA(LC(A))              &kp LA(LC(GRAVE))            &kp LA(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LA(LC(Q))             &auto_suggestion     &thick_arrow           &kp LC(UP)                      &thin_arrow               &ht_sq LA(RS(P)) LA(P)      &ht LA(RS(BSLH)) LA(BSLH)
+                &kp LA(CAPS)             &kp LA(LMETA)               &trans                     &kp LA(LSHFT)              &kp LA(LCTRL)                &kp LA(LC(Z))           &kp LA(DEL)                  &kp LA(LMETA)            &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp LA(RMETA)      &ht_sleep_win 0 LA(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)           &kp LC(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LA(RS(SQT)) LA(SQT)
+                &kp LA(LSHFT)            &kp LA(LC(Z))               &kp LA(LC(X))              &ht_cp LA(LC(V)) LA(LC(C)) &alt_tab_win                 &kp LA(LC(LS(Z)))       &none                        &none                    &kp LA(HOME)     &none   &none       &iaesiiyw               &none              &none                     &ht LA(RS(N)) LA(N)  &caps CAPS_WIN         &ctrl_tripple_down              &thin_arrow               &ht LA(RS(FSLH)) LA(FSLH)   &kp LA(RSHFT)
+                &mo FN                   &ht LA(LS(GRAVE)) LA(GRAVE) &kp LA(ENTER)              &kp LA(LC(C))              &kp LA(LC(V))                                        &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LA(END)                          &kp LA(PG_DN)           &hlt NUM LA(ENTER) &kp LA(SPACE)                                  &kp LA(TAB)            &none                           &ht LA(RS(LBKT)) LA(LBKT) &ht LA(RS(RBKT)) LA(RBKT)   &mo FN_WIN
             >;
-        };
+        };   
 
-        layer_feature_by_right { /* Triggered by the right thumb */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
+        layer_meta_win { /* Triggered by lmeta. LG(C) -> LC(C)*/  
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL N1             &ht AT N2       &ht HASH N3                &ht DLLR N4             &ht PRCNT N5           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET N6        &ht AMPS N7             &ht STAR N8                     &ht LPAR N9         &ht RPAR N0            &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &ht_num KP_N7 W &ht_num KP_N8 E            &ht_num KP_N9 R         &kp T                  &kp N3                                                 /* LG(LS(P)) */                                                            &kp LG(Q)               &kp Y               &kp U                   &kp C_BRI_UP                    &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp CAPS             &kp A                   &ht_num KP_N4 S &ht_num KP_N5 D            &ht_num KP_N6 F         &kp G                  &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL      &ht_sleep 0 LG(W)       &tripple_bspc       &hm LCMD BSPC           &hm_mid RSHFT ESC               &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &ht_num KP_N1 X &ht_num KP_N2 C            &ht_num KP_N3 V         &kp B                  &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &kp LG(S)           &sk RSHFT               &ht_num_sub RS(COMMA) COMMA     &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &ht_num KP_N0 CAPS         &kp LG(V)                                      &hlt FEATURE_BY_L BSPC       &hlt NUM RCMD            &kp END                              &kp PG_DN               &kp ENTER      &trans                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
+                &ht LG(PLUS) LG(EQUAL)   &ht LG(EXCL) LG(N1)         &ht LG(AT) LG(N2)          &ht LG(HASH) LG(N3)        &ht LG(DLLR) LG(N4)          &ht LG(PRCNT) LG(N5)    &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht LG(CARET) LG(N6) &ht LG(AMPS) LG(N7)    &ctrl_tripple_up                &ht LG(LPAR) LG(N9)       &ht LG(RPAR) LG(N0)         &ht LG(UNDERSCORE) LG(MINUS)
+                &kp LG(TAB)              &kp LG(Q)                   &kp LG(W)                  &kp LG(LC(A))              &kp LG(LC(GRAVE))            &kp LG(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LG(LC(Q))             &auto_suggestion     &thick_arrow           &kp LC(UP)                      &thin_arrow               &ht_sq LG(RS(P)) LG(P)      &ht LG(RS(BSLH)) LG(BSLH)
+                &kp LG(CAPS)             &kp LMETA                   &hm LG(LALT) LG(S)         &kp LG(LSHFT)              &kp LG(LCTRL)                &kp LG(LC(Z))           &kp LG(DEL)                  &kp LG(LMETA)            &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp LG(RMETA)      &ht_sleep_win 0 LG(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)           &kp LC(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LG(RS(SQT)) LG(SQT)
+                &kp LG(LSHFT)            &kp LG(LC(Z))               &kp LG(LC(X))              &kp LC(C)                  &alt_tab_win                 &kp LG(LC(LS(Z)))       &none                        &none                    &kp LG(HOME)     &none   &none       &iaesiiyw               &none              &none                     &ht LG(RS(N)) LG(N)  &caps CAPS_WIN         &ctrl_tripple_down              &thin_arrow               &ht LG(RS(FSLH)) LG(FSLH)   &kp LG(RSHFT)
+                &mo FN                   &ht LG(LS(GRAVE)) LG(GRAVE) &kp LG(ENTER)              &kp LG(LC(C))              &kp LG(LC(V))                                        &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LG(END)                          &kp LG(PG_DN)           &hlt NUM LG(ENTER) &kp LG(SPACE)                                  &kp LG(TAB)            &none                           &ht LG(RS(LBKT)) LG(LBKT) &ht LG(RS(RBKT)) LG(RBKT)   &mo FN_WIN
             >;
-        };
+        };         
 
-        layer_numpad { /* Triggered by the left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */
+        layer_feature_by_left_win { /* Triggered by left thumb */  
             bindings = <
-    &ht PLUS EQUAL       &ht EXCL F2             &ht AT F3       &ht HASH F4                &ht DLLR F5             &ht PRCNT F6           &tog DEFAULT                                                                                                                      &mo MOD                 &ht CARET F7        &ht AMPS F8             &ht STAR F9                     &ht LPAR F10        &ht RPAR F11           &ht UNDERSCORE MINUS
-    &kp TAB              &kp Q                   &kp KP_N7       &kp KP_N8                  &kp KP_N9               &kp T                  &kp N4                                                 /* LG(LS(P)) */                                                            &kp LG(Q)               &kp Y               &kp U                   &kp LS(LA(E)) /*vscode format*/ &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp CAPS             &kp A                   &kp KP_N4       &kp KP_N5                  &kp KP_N6               &kp G                  &kp DEL                      &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LCMD                &kp RCTRL      &ht_sleep 0 LG(W)       &kp C_VOL_UP        &kp C_BRI_UP            &auto_suggestion                &kp RALT            &kp RCTRL              &ht RS(SQT) SQT
-    &kp LSHFT            &kp Z                   &kp KP_N1       &kp KP_N2                  &kp KP_N3               &kp B                  &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &kp C_VOL_DN        &kp C_BRI_DN            &kp LG(A)                       &kp DOT             &ht RS(FSLH) FSLH      &kp RSHFT
-    &mo FN               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp KP_N0                  &kp LG(V)                                      &hlt FEATURE_BY_L BSPC       &kp RCMD                 &kp END                              &kp PG_DN               &kp ENTER      &hlt FEATURE_BY_R SPACE                     &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &mo FN
-            >;
-        };
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &tripple_up                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp LC(A)                  &kp LC(GRAVE)                &kp LC(LS(V))           &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(Q)                 &auto_suggestion     &thick_arrow            &kp UP                          &thin_arrow               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp LMETA                   &hlt ALT_WIN RALT          &kp LSHFT                  &hlt CTRL_WIN LCTRL          &kp LC(Z)               &kp DEL                      &kp LMETA                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp RMETA          &ht_sleep_win 0 LC(W)     &tripple_left        &kp LEFT                &kp DOWN                        &kp RIGHT                 &tripple_right              &ht RS(SQT) SQT
+                &kp LSHFT                &kp LC(Z)                   &kp LC(X)                  &ht_cp LC(V) LC(C)         &alt_tab_win                 &kp LC(LS(Z))           &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &ht RS(N) N          &caps CAPS_WIN          &tripple_down                   &thin_arrow               &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &trans                       &hlt NUM RALT            &kp END                              &kp PG_DN               &hlt NUM ENTER     &kp SPACE                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
+            >;  
+        };  
 
-        layer_fn {
-            bindings = <        
-    &ht C_BRI_DN F1      &ht C_BRI_UP F2         &ht LC(UP) F3   &kp F4                     &ht C_REC F5            &kp F6                 &none                                                                                                                             &mo MOD                 &ht C_PREV F7       &ht C_PP F8             &ht C_NEXT F9                   &ht C_MUTE F10      &ht C_VOL_DN F11       &ht C_VOL_UP F12
-    &kp TAB              &ht LS(Q) Q             &ht LS(W) W     &ht LS(E) E                &ht LS(R) R             &ht LS(T) T            &kp N5                                                 /* LG(LS(P)) */                                                            &kp UP                  &ht RS(Y) Y         &ht RS(U) U             &ht RS(I) I                     &ht RS(O) O         &ht_sq RS(P) P         &ht RS(BSLH) BSLH
-    &kp CAPS             &hm_pinky LCTRL A       &hm LALT S      &hm_mid LSHFT D            &hm LCMD F              &ht LS(G) G            &ht N3 LG(R)                 &kp LCTRL                &kp LG(LS(R))    &none   &none       &kp LEFT_COMMAND        &kp RCTRL      &ht_sleep 0 DOWN        &ht RS(H) H         &ht LEFT_COMMAND J      &hm_mid RSHFT K                 &hm RALT L          &hm_pinky RCTRL SEMI   &ht RS(SQT) SQT
-    &kp LSHFT            &ht LG(Z) Z             &ht LG(X) X     &ht LG(C) C                &ht LG(V) V             &ht LS(B) B            &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none          &none                   &ht RS(N) N         &ht RS(M) M             &ht_num_sub RS(COMMA) COMMA     &ht RS(DOT) DOT     &ht RS(FSLH) FSLH      &kp RSHFT
-    &trans               &ht LS(GRAVE) GRAVE     &kp ENTER       &kp LG(C)                  &kp LG(V)                                      &kp BSPC                     &hlt NUM RCMD            &kp END                              &kp PG_DN               &kp ENTER      &kp SPACE                                   &kp TAB                 &none                           &ht RS(LBKT) LBKT   &ht RS(RBKT) RBKT      &trans
-            >;
-        };
-
-        layer_mod {
-            bindings = <        
-    &none                &bt BT_SEL 0            &bt BT_SEL 1   &bt BT_SEL 2               &bt BT_SEL 3             &bt BT_SEL 4          &none                                                                                                                             &trans                  &bt BT_SEL 0        &bt BT_SEL 1            &bt BT_SEL 2                    &bt BT_SEL 3        &bt BT_SEL 4          &none
-    &none                &none                   &none          &none                      &none                    &none                 &bootloader                                                                                                                       &bootloader             &none               &none                   &none                           &none               &none                 &none
-    &none                &none                   &none          &none                      &none                    &none                 &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR               &none            &none   &none       &bt BT_CLR              &bt BT_CLR     &rgb_ug RGB_MEFS_CMD 5  &none               &none                   &none                           &none               &none                 &none
-    &none                &none                   &none          &none                      &none                    &none                 &none                        &none                    &none            &none   &none       &none                   &none          &none                   &none               &none                   &none                           &none               &none                 &none
-    &none                &none                   &none          &bl BL_INC                 &bl BL_DEC                                     &rgb_ug RGB_TOG              &bl BL_TOG               &none                                &none                   &bl BL_TOG     &rgb_ug RGB_TOG                             &bl BL_INC              &bl BL_DEC                      &none               &none                 &none
+        layer_feature_by_right_win { /* Triggered by right thumb */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */  
+            bindings = <    
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &ht_num KP_N7 W            &ht_num KP_N8 E            &ht_num KP_N9 R              &kp T                   &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(Q)                 &kp Y                &kp U                   &kp C_BRI_UP                    &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp A                       &ht_num KP_N4 S            &ht_num KP_N5 D            &ht_num KP_N6 F              &kp G                   &kp DEL                      &kp LMETA                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp RMETA          &ht_sleep_win 0 LC(W)     &tripple_bspc        &hm LCTRL BSPC          &hm_mid RSHFT ESC               &kp RALT                  &kp RMETA                   &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &ht_num KP_N1 X            &ht_num KP_N2 C            &ht_num KP_N3 V              &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp LC(S)            &sk RSHFT               &ht_num_sub RS(COMMA) COMMA     &kp DOT                   &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &ht_num KP_N0 CAPS         &kp LC(V)                                            &kp BSPC                     &hlt NUM RALT            &kp END                              &kp PG_DN               &kp ENTER          &trans                                         &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
+            >;                      
+        };          
+    
+        layer_numpad_win { /* Triggered by left and right thumbs */ /* DOT and COMMA are special hold_tap as they may be used for number-related tasks. */                      
+            bindings = <                        
+                &ht PLUS EQUAL           &ht EXCL F2                 &ht AT F3                  &ht HASH F4                &ht DLLR F5                  &ht PRCNT F6            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET F7         &ht AMPS F8             &ht STAR F9                     &ht LPAR F10              &ht RPAR F11                &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp KP_N7                  &kp KP_N8                  &kp KP_N9                    &kp T                   &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(Q)                 &kp Y                &kp U                   &kp LS(LA(E)) /*vscode format*/ &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &kp A                       &kp KP_N4                  &kp KP_N5                  &kp KP_N6                    &kp G                   &kp DEL                      &kp LMETA                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp RMETA          &ht_sleep_win 0 LC(W)     &kp C_VOL_UP         &kp C_BRI_UP            &auto_suggestion                &kp RALT                  &kp RMETA                   &ht RS(SQT) SQT
+                &kp LSHFT                &kp Z                       &kp KP_N1                  &kp KP_N2                  &kp KP_N3                    &kp B                   &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &kp C_VOL_DN         &kp C_BRI_DN            &kp LC(A)                       &kp DOT                   &ht RS(FSLH) FSLH           &kp RSHFT
+                &mo FN                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp KP_N0                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &kp RALT                 &kp END                              &kp PG_DN               &kp ENTER          &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
+            >;      
+        };      
+    
+        layer_fn_win {      
+            bindings = <            
+                &ht C_BRI_DN F1          &ht C_BRI_UP F2             &ht LC(UP) F3              &kp F4                     &ht C_REC F5                 &kp F6                  &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht C_PREV F7        &ht C_PP F8             &ht C_NEXT F9                   &ht C_MUTE F10            &ht C_VOL_DN F11            &ht C_VOL_UP F12
+                &kp TAB                  &ht LS(Q) Q                 &ht LS(W) W                &ht LS(E) E                &ht LS(R) R                  &ht LS(T) T             &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp UP                    &ht RS(Y) Y          &ht RS(U) U             &ht RS(I) I                     &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &kp CAPS                 &hm_pinky LMETA A           &hm LALT S                 &hm_mid LSHFT D            &hm LCTRL F                  &ht LS(G) G             &ht N3 LC(R)                 &kp LMETA                &kp LC(LS(R))    &none   &none       &kp LCTRL               &kp RMETA          &ht_sleep_win 0 DOWN      &ht RS(H) H          &ht LCTRL J             &hm_mid RSHFT K                 &hm RALT L                &hm_pinky RMETA SEMI        &ht RS(SQT) SQT
+                &kp LSHFT                &ht LC(Z) Z                 &ht LC(X) X                &ht LC(C) C                &ht LC(V) V                  &ht LS(B) B             &none                        &none                    &kp HOME         &none   &none       &iaesiiyw               &none              &none                     &ht RS(N) N          &ht RS(M) M             &ht_num_sub RS(COMMA) COMMA     &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
+                &trans                   &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &kp BSPC                     &hlt NUM RALT            &kp END                              &kp PG_DN               &kp ENTER          &kp SPACE                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &trans
+            >;      
+        };              
+        
+        layer_mod {     
+            bindings = <                
+                &none                    &bt_lt 0 DEFAULT_WIN        &bt_lt 1 DEFAULT_WIN       &bt_lt 2 DEFAULT           &bt_lt 3 DEFAULT             &bt_lt 4 DEFAULT        &none                                                                                                                                 &trans                    &bt BT_SEL 0         &bt BT_SEL 1            &bt BT_SEL 2                    &bt BT_SEL 3              &bt BT_SEL 4                &none
+                &none                    &none                       &none                      &none                      &none                        &none                   &bootloader                                                                                                                           &bootloader               &none                &none                   &none                           &none                     &none                       &none
+                &none                    &none                       &none                      &none                      &none                        &none                   &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR               &none            &none   &none       &bt BT_CLR              &bt BT_CLR         &rgb_ug RGB_MEFS_CMD 5    &none                &none                   &none                           &none                     &none                       &none
+                &none                    &none                       &none                      &none                      &none                        &none                   &none                        &none                    &none            &none   &none       &none                   &none              &none                     &none                &none                   &none                           &none                     &none                       &none
+                &none                    &none                       &none                      &bl BL_INC                 &bl BL_DEC                                           &rgb_ug RGB_TOG              &bl BL_TOG               &none                                &none                   &bl BL_TOG         &rgb_ug RGB_TOG                                &bl BL_INC              &bl BL_DEC                      &none                     &none                       &none
             >;
         };
     };
