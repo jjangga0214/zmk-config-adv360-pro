@@ -244,16 +244,42 @@
             bindings
                 = <&macro_tap &kp L &kp A &kp K &kp D &kp L &kp L &kp O &kp W &kp LS(N2) &kp T &kp M &kp A &kp L &kp U &kp DOT &kp C &kp SEMI &kp M>;
         };
-        bt_to: bt_to {
-            label = "bt_to";
-            compatible = "zmk,behavior-macro-two-param";
-            #binding-cells = <2>;  /* 2 params macro */
+        /* REF: https://github.com/zmkfirmware/zmk/issues/2379 */
+        bt_to_0: bt_to_0 {
+            label = "bt_to_0";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
             bindings
-                = <&macro_param_1to2>
-                , <&bt BT_SEL MACRO_PLACEHOLDER>
-                , <&macro_param_2to1>
-                , <&to MACRO_PLACEHOLDER>;
+                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
         };        
+        bt_to_1: bt_to_1 {
+            label = "bt_to_1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
+        };        
+        bt_to_2: bt_to_2 {
+            label = "bt_to_2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT_WIN>;
+        };        
+        bt_to_3: bt_to_3 {
+            label = "bt_to_3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT>;
+        };        
+        bt_to_4: bt_to_4 {
+            label = "bt_to_4";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_tap &bt BT_SEL MACRO_PLACEHOLDER &to DEFAULT>;
+        };                                        
     }; 
 
     combos {
@@ -810,9 +836,9 @@
         
         layer_mod {     
             bindings = <                
-                &none                    &bt_to 0 DEFAULT_WIN        &bt_to 1 DEFAULT_WIN       &bt_to 2 DEFAULT           &bt_to 3 DEFAULT             &bt_to 4 DEFAULT        &none                                                                                                                                 &trans                    &bt BT_SEL 0         &bt BT_SEL 1            &bt BT_SEL 2                    &bt BT_SEL 3              &bt BT_SEL 4                &none
+                &none                    &bt_to_0                    &bt_to_1                   &bt_to_2                   &bt_to_3                     &bt_to_4                &none                                                                                                                                 &trans                    &bt_to_0             &bt_to_1                &bt_to_2                        &bt_to_3                  &bt_to_4                    &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &bootloader                                                                                                                           &bootloader               &none                &none                   &none                           &none                     &none                       &none
-                &none                    &none                       &none                      &none                      &none                        &none                   &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR               &none            &none   &none       &bt BT_CLR              &bt BT_CLR         &rgb_ug RGB_MEFS_CMD 5    &none                &none                   &none                           &none                     &none                       &none
+                &none                    &none                       &none                      &none                      &none                        &none                   &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR_ALL           &none            &none   &none       &bt BT_CLR_ALL          &bt BT_CLR         &rgb_ug RGB_MEFS_CMD 5    &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &none                        &none                    &none            &none   &none       &none                   &none              &none                     &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &bl BL_INC                 &bl BL_DEC                                           &rgb_ug RGB_TOG              &bl BL_TOG               &none                                &none                   &bl BL_TOG         &rgb_ug RGB_TOG                                &bl BL_INC              &bl BL_DEC                      &none                     &none                       &none
             >;
