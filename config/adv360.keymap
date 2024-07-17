@@ -264,7 +264,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &bt BT_SEL 2 &to DEFAULT_WIN>;
+                = <&macro_tap &bt BT_SEL 2 &to DEFAULT>;
         };        
         bt_to_3: bt_to_3 {
             label = "bt_to_3";
