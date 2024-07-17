@@ -55,7 +55,7 @@
                 = <&macro_tap &caps_word &tog CAPSW>;
         };    
         capsw_win: capsw_win {
-            label = "capsw";
+            label = "capsw_win";
             compatible = "zmk,behavior-macrom";
             #binding-cells = <0>;
             bindings
@@ -74,22 +74,7 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp ESC &tog CAPSW_WIN>;
-        };                
-        space_uncap: space_uncap {
-            label = "space_uncap";
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings
-                = <&macro_param_1to1>
-                , <&macro_tab &uncaps MACRO_PLACEHOLDER SPACE>;
-        };  
-        space_tog_wcw_win: space_toggle_while_caps_word_win {
-            label = "space_toggle_while_caps_word_win";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &kp SPACE &tog CAPSW_WIN>;
-        };        
+        };                      
         dqts: doublequotes {
             label = "doublequotes";
             compatible = "zmk,behavior-macro";
@@ -211,28 +196,28 @@
                 = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
         };
         ctrl_tripple_left: ctrl_tripple_left {
-            label = "tripple_left";
+            label = "ctrl_tripple_left";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LC(LEFT) &kp LC(LEFT) &kp LC(LEFT)>;
         };
         ctrl_tripple_right: ctrl_tripple_right {
-            label = "tripple_right";
+            label = "ctrl_tripple_right";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LC(RIGHT) &kp LC(RIGHT) &kp LC(RIGHT)>;
         };
         ctrl_tripple_up: ctrl_tripple_up {
-            label = "tripple_up";
+            label = "ctrl_tripple_up";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp LC(UP) &kp LC(UP) &kp LC(UP)>;
         };
         ctrl_tripple_down: ctrl_tripple_down {
-            label = "tripple_down";
+            label = "ctrl_tripple_down";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
@@ -259,8 +244,8 @@
             bindings
                 = <&macro_tap &kp L &kp A &kp K &kp D &kp L &kp L &kp O &kp W &kp LS(N2) &kp T &kp M &kp A &kp L &kp U &kp DOT &kp C &kp SEMI &kp M>;
         };
-        bt_lt: bl_lt {
-            label = "bl_lt";
+        bt_to: bt_to {
+            label = "bt_to";
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;  /* 2 params macro */
             bindings
@@ -825,7 +810,7 @@
         
         layer_mod {     
             bindings = <                
-                &none                    &bt_lt 0 DEFAULT_WIN        &bt_lt 1 DEFAULT_WIN       &bt_lt 2 DEFAULT           &bt_lt 3 DEFAULT             &bt_lt 4 DEFAULT        &none                                                                                                                                 &trans                    &bt BT_SEL 0         &bt BT_SEL 1            &bt BT_SEL 2                    &bt BT_SEL 3              &bt BT_SEL 4                &none
+                &none                    &bt_to 0 DEFAULT_WIN        &bt_to 1 DEFAULT_WIN       &bt_to 2 DEFAULT           &bt_to 3 DEFAULT             &bt_to 4 DEFAULT        &none                                                                                                                                 &trans                    &bt BT_SEL 0         &bt BT_SEL 1            &bt BT_SEL 2                    &bt BT_SEL 3              &bt BT_SEL 4                &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &bootloader                                                                                                                           &bootloader               &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR               &none            &none   &none       &bt BT_CLR              &bt BT_CLR         &rgb_ug RGB_MEFS_CMD 5    &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &none                        &none                    &none            &none   &none       &none                   &none              &none                     &none                &none                   &none                           &none                     &none                       &none
