@@ -54,7 +54,7 @@
             bindings
                 = <&macro_tap &caps_word>
                 , <&macro_param_1to1>
-                , <&tog MACRO_PLACEHOLDER>;
+                , <&macro_tap &tog MACRO_PLACEHOLDER>;
         };       
         uncaps: uncaps {
             label = "uncaps";
