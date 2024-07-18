@@ -133,9 +133,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tab &kp LA(LS(TAB))>
+                = <&macro_tap &kp LA(LS(TAB))>
                 , <&macro_pause_for_release>
-                , <&macro_tab &kp ENTER>;
+                , <&macro_tap &kp ENTER>;
         };        
         thick_arrow: thick_arrow {
             label = "thick_arrow";
