@@ -543,6 +543,7 @@
 
     behaviors {
         #include "macros.dtsi"
+        #include "version.dtsi"
 
         ht: hold_tap_default {
             compatible = "zmk,behavior-hold-tap";
