@@ -133,9 +133,10 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LA(LS(TAB))>
+                = <&macro_press &kp LALT>
+                , <&macro_tap &kp LS(TAB)>
                 , <&macro_pause_for_release>
-                , <&macro_tap &kp ENTER>;
+                , <&macro_release &kp LALT>;
         };        
         thick_arrow: thick_arrow {
             label = "thick_arrow";
@@ -164,7 +165,8 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_press &kp LMETA>
-                , <&macro_tap &kp X &kp U &kp S>
+                /* I -> U, D -> S */                
+                , <&macro_tap &kp X &kp I &kp D>
                 , <&macro_release &kp LMETA>;
         };        
         tripple_left: tripple_left {
@@ -200,28 +202,36 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(LEFT) &kp LC(LEFT) &kp LC(LEFT)>;
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp LEFT &kp LEFT &kp LEFT>
+                , <&macro_release &kp LCTRL>;                   
         };
         ctrl_tripple_right: ctrl_tripple_right {
             label = "ctrl_tripple_right";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(RIGHT) &kp LC(RIGHT) &kp LC(RIGHT)>;
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp RIGHT &kp RIGHT &kp RIGHT>
+                , <&macro_release &kp LCTRL>;                
         };
         ctrl_tripple_up: ctrl_tripple_up {
             label = "ctrl_tripple_up";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(UP) &kp LC(UP) &kp LC(UP)>;
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp UP &kp UP &kp UP>
+                , <&macro_release &kp LCTRL>;                    
         };
         ctrl_tripple_down: ctrl_tripple_down {
             label = "ctrl_tripple_down";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp LC(DOWN) &kp LC(DOWN) &kp LC(DOWN)>;
+                = <&macro_press &kp LCTRL>
+                , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
+                , <&macro_release &kp LCTRL>;                   
         };        
         tripple_bspc: tripple_bspc {
             label = "tripple_bspc";
@@ -235,6 +245,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
+            /* RC instead of LC, to avoid a collision, as RC is used lesser than LC. */   
                 = <&macro_press &kp RC(SPACE)>;
         };                
         iaesiiyw: iaesiiyw {
@@ -646,6 +657,16 @@
             flavor = "hold-preferred";
             bindings = <&mo>, <&kp>;
         };
+        hmlt: homerow_mods_hold_preferred_lt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "homerow_mods_hold_preferred_lt";
+            #binding-cells = <2>;
+            tapping-term-ms = <175>;
+            quick_tap_ms = <175>;
+            global-quick-tap;             
+            flavor = "balanced";
+            bindings = <&mo>, <&kp>;
+        };        
         hlt_uncapsw_spc: hlt_uncapsw_spc {
             compatible = "zmk,behavior-hold-tap";
             label = "hlt_uncapsw_spc";
@@ -749,7 +770,7 @@
             bindings = < 
                 &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
                 &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */       &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
-                &kp CAPS                 &hm_pinky LMETA A           &hlt ALT_WIN S             &hm_mid LSHFT D            &hlt CTRL_WIN F              &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
+                &kp CAPS                 &hm_pinky LMETA A           &hm LALT S                 &hm_mid LSHFT D            &hmlt CTRL_WIN F             &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                                                                         &kp HOME                             &iaesiiyw                                                            &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
                 &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LC(LS(E)) /* LC(LS(F)) */        &kp LC(E) /* LC(F) */   &hlt NUM ENTER     &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
             >; 
@@ -759,7 +780,7 @@
             bindings = < 
                 &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
                 &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */       &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
-                &kp CAPS                 &hm_pinky LMETA A           &hlt ALT_WIN S             &hm_mid LSHFT D            &hlt CTRL_WIN F              &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp RS(SEMI)                &ht RS(SQT) SQT
+                &kp CAPS                 &hm_pinky LMETA A           &hm LALT S                 &hm_mid LSHFT D            &hmlt CTRL_WIN F             &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)          &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp RS(SEMI)                &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                                                                         &kp HOME                             &iaesiiyw                                                            &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
                 &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM RALT            &kp LC(LS(F)) /* LC(LS(F)) */        &kp LC(F)               &hlt NUM ENTER     &hlt_uncapsw_spc_win FEAT_R_WIN 0              &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
             >;
@@ -770,10 +791,10 @@
                 &ht LC(PLUS) LC(EQUAL)   &ht LC(EXCL) LC(N1)         &ht LC(AT) LC(N2)          &ht LC(HASH) LC(N3)        &ht LC(DLLR) LC(N4)          &ht LC(PRCNT) LC(N5)    &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht LC(CARET) LC(N6) &ht LC(AMPS) LC(N7)     &ctrl_tripple_up                &ht LC(LPAR) LC(N9)       &ht LC(RPAR) LC(N0)         &ht LC(UNDERSCORE) LC(MINUS)
                 &kp LC(TAB)              &kp LC(Q)                   &kp LC(W)                  &kp LC(A)                  &kp LC(GRAVE)                &kp LC(LS(V))           &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(LC(Q))             &auto_suggestion     &thick_arrow            &kp PG_UP                       &thin_arrow               &ht_sq LC(RS(P)) LC(P)      &ht LC(RS(BSLH)) LC(BSLH)
                 &kp LC(CAPS)             &hm_pinky LC(LMETA) LC(A)   &hm LC(LALT) LC(S)         &hm_mid LC(LSHFT) LC(D)    &trans                       &kp LC(Z)               &kp LC(DEL)                  &kp LC(LMETA)            &kp LC(LS(R))                        &kp LCTRL               &kp LC(RMETA)      &ht_sleep_win 0 LC(LC(W)) &ctrl_tripple_left   &kp HOME                &kp PG_DN                       &kp END                   &ctrl_tripple_right         &ht LC(RS(SQT)) LC(SQT)
-                &kp LC(LSHFT)            &kp LC(Z)                   &kp LC(X)                  &ht_cp LC(V) LC(C)         &alt_tab_win                 &kp LC(LS(Z))                                                                 &kp LC(HOME)                         &iaesiiyw                                                            &ht LC(RS(N)) LC(N)  &capsw_win              &ctrl_tripple_down              &thin_arrow               &ht LC(RS(FSLH)) LC(FSLH)   &kp LC(RSHFT)
-                &mo FN_WIN               &ht LC(LS(GRAVE)) LC(GRAVE) &kp LC(ENTER)              &kp LC(C)                  &kp LC(V)                                            &kp DEL                      &hlt NUM LC(RALT)        &kp LC(END)                          &kp LC(PG_DN)           &hlt NUM LC(ENTER) &kp LG(S)                                      &kp LC(TAB)             &none                           &ht LC(RS(LBKT)) LC(LBKT) &ht LC(RS(RBKT)) LC(RBKT)   &mo FN_WIN
+                &kp LC(LSHFT)            &kp LC(Z)                   &kp LC(X)                  &ht_cp LC(V) LC(C)         &alt_tab_win                 &kp LC(LS(Z))                                                                 &kp LC(HOME)                         &iaesiiyw                                   /* LG(S) */              &ht LC(RS(N)) LC(N)  &capsw_win              &ctrl_tripple_down              &thin_arrow               &ht LC(RS(FSLH)) LC(FSLH)   &kp LC(RSHFT)
+                &mo FN_WIN               &ht LC(LS(GRAVE)) LC(GRAVE) &kp LC(ENTER)              &kp LC(C)                  &kp LC(V)                                            &kp DEL                      &hlt NUM LC(RALT)        &kp LC(END)                          &kp LC(PG_DN)           &hlt NUM LC(ENTER) &kp LG(D)                                      &kp LC(TAB)             &none                           &ht LC(RS(LBKT)) LC(LBKT) &ht LC(RS(RBKT)) LC(RBKT)   &mo FN_WIN
             >;
-        };            
+        };
 
         layer_alt_win { /* Triggered by lalt. LA(LEFT, RIGHT, UP, DOWN) -> LG(LEFT, RIGHT, UP, DOWN) */  
             bindings = <
@@ -785,7 +806,7 @@
             >;
         };   
 
-        layer_meta_win { /* Triggered by lmeta. LG(C) -> LC(C)*/  
+        layer_meta_win { /* Triggered by lmeta. LG(C) -> LC(C) */  
             bindings = <
                 &ht LG(PLUS) LG(EQUAL)   &ht LG(EXCL) LG(N1)         &ht LG(AT) LG(N2)          &ht LG(HASH) LG(N3)        &ht LG(DLLR) LG(N4)          &ht LG(PRCNT) LG(N5)    &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht LG(CARET) LG(N6) &ht LG(AMPS) LG(N7)     &ctrl_tripple_up                &ht LG(LPAR) LG(N9)       &ht LG(RPAR) LG(N0)         &ht LG(UNDERSCORE) LG(MINUS)
                 &kp LG(TAB)              &kp LG(Q)                   &kp LG(W)                  &kp LG(LC(A))              &kp LG(LC(GRAVE))            &kp LG(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LG(LC(Q))             &auto_suggestion     &thick_arrow            &kp LC(UP)                      &thin_arrow               &ht_sq LG(RS(P)) LG(P)      &ht LG(RS(BSLH)) LG(BSLH)
@@ -799,7 +820,7 @@
             bindings = <
                 &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                       &mo MOD                   &ht CARET N6         &ht AMPS N7             &tripple_up                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
                 &kp TAB                  &kp Q                       &kp W                      &kp LC(A)                  &kp LC(GRAVE)                &kp LC(LS(V))           &to DEFAULT                                            /* LC(LS(P)) */                                                                &kp LC(Q)                 &auto_suggestion     &thick_arrow            &kp UP                          &thin_arrow               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
-                &kp CAPS                 &kp LMETA                   &hlt ALT_WIN RALT          &kp LSHFT                  &hlt CTRL_WIN LCTRL          &kp LC(Z)               &kp DEL                      &kp LMETA                &kp LC(LS(R))                        &kp LCTRL               &kp RMETA          &ht_sleep_win 0 LC(W)     &tripple_left        &kp LEFT                &kp DOWN                        &kp RIGHT                 &tripple_right              &ht RS(SQT) SQT
+                &kp CAPS                 &kp LMETA                   &mo ALT_WIN                &kp LSHFT                  &mo CTRL_WIN                 &kp LC(Z)               &kp DEL                      &kp LMETA                &kp LC(LS(R))                        &kp LCTRL               &kp RMETA          &ht_sleep_win 0 LC(W)     &tripple_left        &kp LEFT                &kp DOWN                        &kp RIGHT                 &tripple_right              &ht RS(SQT) SQT
                 &kp LSHFT                &kp LC(Z)                   &kp LC(X)                  &ht_cp LC(V) LC(C)         &alt_tab_win                 &kp LC(LS(Z))                                                                 &kp HOME                             &iaesiiyw                                                            &ht RS(N) N          &capsw_win              &tripple_down                   &thin_arrow               &ht RS(FSLH) FSLH           &kp RSHFT
                 &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &trans                       &hlt NUM RALT            &kp END                              &kp PG_DN               &hlt NUM ENTER     &kp SPACE                                      &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
             >;  
