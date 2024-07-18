@@ -265,7 +265,20 @@
                 , <&macro_param_2to1>
                 , <&to MACRO_PLACEHOLDER>;
         };         
-    }; 
+        /*
+         * &mo cannot be doubled, so wrapping &tog in macro.
+         * REF: https://github.com/zmkfirmware/zmk/issues/2382
+         */
+        feat_l_win: feat_l_win { 
+            label = "feat_l_win";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &tog FEAT_L_WIN>
+                , <&macro_pause_for_release>
+                , <&macro_release &tog FEAT_L_WIN>;   
+         }
+    };
 
     combos {
         
@@ -656,7 +669,15 @@
             tapping-term-ms = <160>;
             flavor = "hold-preferred";
             bindings = <&mo>, <&uncapsw_spc_win>;     
-        };                     
+        };       
+        hlt_feat_l_win: hlt_feat_l_win {
+            compatible = "zmk,behavior-hold-tap";
+            label = "hlt_feat_l_win";
+            #binding-cells = <2>;
+            tapping-term-ms = <160>;
+            flavor = "hold-preferred";
+            bindings = <&feat_l_win>, <&kp>;
+        };                      
         ht_sleep: ht_sleep {
             compatible = "zmk,behavior-hold-tap";
             label = "ht_sleep";
@@ -746,7 +767,7 @@
                 &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */             &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
                 &kp CAPS                 &hm_pinky LMETA A           &hm LALT S                 &hm_mid LSHFT D            &hmlt CTRL_WIN F             &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)                &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                                                                         &kp HOME                             &iaesiiyw                                                                  &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
-                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM_WIN RALT        &kp LC(LS(E)) /* LC(LS(F)) */        &kp LC(E) /* LC(F) */   &hlt NUM_WIN ENTER       &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
+                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt_feat_l_win 0 BSPC       &hlt NUM_WIN RALT        &kp LC(LS(E)) /* LC(LS(F)) */        &kp LC(E) /* LC(F) */   &hlt NUM_WIN ENTER       &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
             >; 
         }; 
  
@@ -756,7 +777,7 @@
                 &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */             &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
                 &kp CAPS                 &hm_pinky LMETA A           &hm LALT S                 &hm_mid LSHFT D            &hmlt CTRL_WIN F             &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)                &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp RS(SEMI)                &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                                                                         &kp HOME                             &iaesiiyw                                                                  &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
-                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM_WIN RALT        &kp LC(LS(F)) /* LC(LS(F)) */        &kp LC(F)               &hlt NUM_WIN ENTER       &hlt_uncapsw_spc_win FEAT_R_WIN 0              &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
+                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt_feat_l_win 0 BSPC       &hlt NUM_WIN RALT        &kp LC(LS(F)) /* LC(LS(F)) */        &kp LC(F)               &hlt NUM_WIN ENTER       &hlt_uncapsw_spc_win FEAT_R_WIN 0              &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
             >;
         };
 
@@ -776,7 +797,7 @@
                 &kp LA(TAB)              &kp LA(Q)                   &kp LA(W)                  &kp LA(LC(A))              &kp LA(LC(GRAVE))            &kp LA(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                      &kp LA(LC(Q))             &auto_suggestion     &thick_arrow            &kp LC(UP)                      &thin_arrow               &ht_sq LA(RS(P)) LA(P)      &ht LA(RS(BSLH)) LA(BSLH)
                 &kp LA(CAPS)             &kp LA(LMETA)               &trans                     &kp LA(LSHFT)              &kp LA(LCTRL)                &kp LA(LC(Z))           &kp LA(DEL)                  &kp LA(LMETA)            &kp LC(LS(R))                        &kp LCTRL               &kp LA(RMETA)            &ht_sleep_win 0 LA(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)            &kp LC(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LA(RS(SQT)) LA(SQT)
                 &kp LA(LSHFT)            &kp LA(LC(Z))               &kp LA(LC(X))              &ht_cp LA(LC(V)) LA(LC(C)) &alt_tab_win                 &kp LA(LC(LS(Z)))                                                             &kp LA(HOME)                         &iaesiiyw                                                                  &ht LA(RS(N)) LA(N)  &capsw_win              &ctrl_tripple_down              &thin_arrow               &ht LA(RS(FSLH)) LA(FSLH)   &kp LA(RSHFT)
-                &mo FN_WIN               &ht LA(LS(GRAVE)) LA(GRAVE) &kp LA(ENTER)              &kp LA(LC(C))              &kp LA(LC(V))                                        &hlt FEAT_L_WIN BSPC         &hlt NUM_WIN RALT        &kp LA(END)                          &kp LA(PG_DN)           &hlt NUM_WIN LA(ENTER)   &kp LA(SPACE)                                  &kp LA(TAB)             &none                           &ht LA(RS(LBKT)) LA(LBKT) &ht LA(RS(RBKT)) LA(RBKT)   &mo FN_WIN
+                &mo FN_WIN               &ht LA(LS(GRAVE)) LA(GRAVE) &kp LA(ENTER)              &kp LA(LC(C))              &kp LA(LC(V))                                        &hlt_feat_l_win 0 BSPC       &hlt NUM_WIN RALT        &kp LA(END)                          &kp LA(PG_DN)           &hlt NUM_WIN LA(ENTER)   &kp LA(SPACE)                                  &kp LA(TAB)             &none                           &ht LA(RS(LBKT)) LA(LBKT) &ht LA(RS(RBKT)) LA(RBKT)   &mo FN_WIN
             >;
         };   
 
@@ -786,7 +807,7 @@
                 &kp LG(TAB)              &kp LG(Q)                   &kp LG(W)                  &kp LG(LC(A))              &kp LG(LC(GRAVE))            &kp LG(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                      &kp LG(LC(Q))             &auto_suggestion     &thick_arrow            &kp LC(UP)                      &thin_arrow               &ht_sq LG(RS(P)) LG(P)      &ht LG(RS(BSLH)) LG(BSLH)
                 &kp LG(CAPS)             &kp LMETA                   &hm LG(LALT) LG(S)         &kp LG(LSHFT)              &kp LG(LCTRL)                &kp LG(LC(Z))           &kp LG(DEL)                  &kp LG(LMETA)            &kp LC(LS(R))                        &kp LCTRL               &kp LG(RMETA)            &ht_sleep_win 0 LG(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)            &kp LC(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LG(RS(SQT)) LG(SQT)
                 &kp LG(LSHFT)            &kp LG(LC(Z))               &kp LG(LC(X))              &kp LC(C)                  &alt_tab_win                 &kp LG(LC(LS(Z)))                                                             &kp LG(HOME)                         &iaesiiyw                                                                  &ht LG(RS(N)) LG(N)  &capsw_win              &ctrl_tripple_down              &thin_arrow               &ht LG(RS(FSLH)) LG(FSLH)   &kp LG(RSHFT)
-                &mo FN_WIN               &ht LG(LS(GRAVE)) LG(GRAVE) &kp LG(ENTER)              &kp LG(LC(C))              &kp LG(LC(V))                                        &hlt FEAT_L_WIN BSPC         &hlt NUM_WIN RALT       &kp LG(END)                          &kp LG(PG_DN)           &hlt NUM_WIN LG(ENTER)    &kp LG(SPACE)                                  &kp LG(TAB)             &none                           &ht LG(RS(LBKT)) LG(LBKT) &ht LG(RS(RBKT)) LG(RBKT)   &mo FN_WIN
+                &mo FN_WIN               &ht LG(LS(GRAVE)) LG(GRAVE) &kp LG(ENTER)              &kp LG(LC(C))              &kp LG(LC(V))                                        &hlt_feat_l_win 0 BSPC       &hlt NUM_WIN RALT        &kp LG(END)                          &kp LG(PG_DN)           &hlt NUM_WIN LG(ENTER)   &kp LG(SPACE)                                  &kp LG(TAB)             &none                           &ht LG(RS(LBKT)) LG(LBKT) &ht LG(RS(RBKT)) LG(RBKT)   &mo FN_WIN
             >;
         };         
 
@@ -816,7 +837,7 @@
                 &kp TAB                  &kp Q                       &kp KP_N7                  &kp KP_N8                  &kp KP_N9                    &kp T                   &to DEFAULT                                            /* LC(LS(P)) */                                                                      &kp LC(Q)                 &kp Y                &kp U                   &kp LS(LA(E)) /*vscode format*/ &ht RS(O) O               &ht_sq RS(P) P              &ht RS(BSLH) BSLH
                 &kp CAPS                 &kp A                       &kp KP_N4                  &kp KP_N5                  &kp KP_N6                    &kp G                   &kp DEL                      &kp LMETA                &kp LC(LS(R))                        &kp LCTRL               &kp RMETA                &ht_sleep_win 0 LC(W)     &kp C_VOL_UP         &kp C_BRI_UP            &auto_suggestion                &kp RALT                  &kp RMETA                   &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp KP_N1                  &kp KP_N2                  &kp KP_N3                    &kp B                                                                         &kp HOME                             &iaesiiyw                                                                  &kp C_VOL_DN         &kp C_BRI_DN            &kp LC(A)                       &kp DOT                   &ht RS(FSLH) FSLH           &kp RSHFT
-                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp KP_N0                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &kp RALT                 &kp END                              &kp PG_DN               &kp ENTER                &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
+                &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp KP_N0                  &kp LC(V)                                            &hlt_feat_l_win 0 BSPC       &kp RALT                 &kp END                              &kp PG_DN               &kp ENTER                &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN_WIN
             >;      
         };      
     
