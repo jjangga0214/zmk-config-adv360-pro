@@ -254,43 +254,17 @@
             #binding-cells = <0>;
             bindings
                 = <&macro_tap &kp L &kp A &kp K &kp D &kp L &kp L &kp O &kp W &kp LS(N2) &kp T &kp M &kp A &kp L &kp U &kp DOT &kp C &kp SEMI &kp M>;
-        };
-        /* REF: https://github.com/zmkfirmware/zmk/issues/2379 */
-        bt_to_0: bt_to_0 {
-            label = "bt_to_0";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+        };                               
+        bt_to: bt_to {
+            label = "bt_to";
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
             bindings
-                = <&macro_tap &bt BT_SEL 0 &to DEFAULT_WIN>;
-        };        
-        bt_to_1: bt_to_1 {
-            label = "bt_to_1";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &bt BT_SEL 1 &to DEFAULT_WIN>;
-        };        
-        bt_to_2: bt_to_2 {
-            label = "bt_to_2";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &bt BT_SEL 2 &to DEFAULT>;
-        };        
-        bt_to_3: bt_to_3 {
-            label = "bt_to_3";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &bt BT_SEL 3 &to DEFAULT>;
-        };        
-        bt_to_4: bt_to_4 {
-            label = "bt_to_4";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_tap &bt BT_SEL 4 &to DEFAULT>;
-        };                                        
+                = <&macro_param_1to2>
+                , <&bt BT_SEL MACRO_PLACEHOLDER>
+                , <&macro_param_2to1>
+                , <&to MACRO_PLACEHOLDER>;
+        };         
     }; 
 
     combos {
@@ -335,91 +309,91 @@
         };
         combo_plus {
             timeout-ms = <75>;
-            key-positions = <31 43>;
+            key-positions = <31 41>;
             bindings = <&kp PLUS>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_equal {
             timeout-ms = <75>;
-            key-positions = <32 43>;
+            key-positions = <32 41>;
             bindings = <&kp EQUAL>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_brakets {
             timeout-ms = <50>;
-            key-positions = <30 44>;
+            key-positions = <30 42>;
             bindings = <&brakets>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_braces {
             timeout-ms = <60>;
-            key-positions = <31 44>;
+            key-positions = <31 42>;
             bindings = <&braces>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_parenthesises {
             timeout-ms = <60>;
-            key-positions = <32 44>;
+            key-positions = <32 42>;
             bindings = <&parens>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_tilde {
             timeout-ms = <60>;
-            key-positions = <31 45>;
+            key-positions = <31 43>;
             bindings = <&kp TILDE>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_graves {
             timeout-ms = <60>;
-            key-positions = <32 45>;
+            key-positions = <32 43>;
             bindings = <&graves>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_percent {
             timeout-ms = <75>;
-            key-positions = <30 63>;
+            key-positions = <30 55>;
             bindings = <&kp PRCNT>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_hash {
             timeout-ms = <75>;
-            key-positions = <31 63>;
+            key-positions = <31 55>;
             bindings = <&kp HASH>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_exclamation {
             timeout-ms = <75>;
-            key-positions = <32 63>;
+            key-positions = <32 55>;
             bindings = <&kp EXCL>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_caret {
             timeout-ms = <75>;
-            key-positions = <30 64>;
+            key-positions = <30 56>;
             bindings = <&kp CARET>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_amps {
             timeout-ms = <75>;
-            key-positions = <31 64>;
+            key-positions = <31 56>;
             bindings = <&kp AMPS>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_star {
             timeout-ms = <75>;
-            key-positions = <32 64>;
+            key-positions = <32 56>;
             bindings = <&kp STAR>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_dollar {
             timeout-ms = <75>;
-            key-positions = <31 65>;
+            key-positions = <31 57>;
             bindings = <&kp DLLR>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
         combo_at {
             timeout-ms = <75>;
-            key-positions = <32 65>;
+            key-positions = <32 57>;
             bindings = <&kp AT>;
             layers = <FEAT_L NUM FEAT_L_WIN NUM_WIN>;
         };
@@ -462,91 +436,91 @@
         };
         combo_plus_by_r {
             timeout-ms = <75>;
-            key-positions = <31 43>;
+            key-positions = <31 41>;
             bindings = <&kp PLUS>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_equal_by_r {
             timeout-ms = <75>;
-            key-positions = <32 43>;
+            key-positions = <32 41>;
             bindings = <&kp EQUAL>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_brakets_by_r {
             timeout-ms = <75>;
-            key-positions = <30 44>;
+            key-positions = <30 42>;
             bindings = <&brakets>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_braces_by_r {
             timeout-ms = <75>;
-            key-positions = <31 44>;
+            key-positions = <31 42>;
             bindings = <&braces>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_parenthesises_by_r {
             timeout-ms = <75>;
-            key-positions = <32 44>;
+            key-positions = <32 42>;
             bindings = <&parens>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_tilde_by_r {
             timeout-ms = <105>;
-            key-positions = <31 45>;
+            key-positions = <31 43>;
             bindings = <&kp TILDE>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_graves_by_r {
             timeout-ms = <105>;
-            key-positions = <32 45>;
+            key-positions = <32 43>;
             bindings = <&graves>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_percent_by_r {
             timeout-ms = <105>;
-            key-positions = <30 63>;
+            key-positions = <30 55>;
             bindings = <&kp PRCNT>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_hash_by_r {
             timeout-ms = <105>;
-            key-positions = <31 63>;
+            key-positions = <31 55>;
             bindings = <&kp HASH>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_exclamation_by_r {
             timeout-ms = <105>;
-            key-positions = <32 63>;
+            key-positions = <32 55>;
             bindings = <&kp EXCL>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_caret_by_r {
             timeout-ms = <105>;
-            key-positions = <30 64>;
+            key-positions = <30 56>;
             bindings = <&kp CARET>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_amps_by_r {
             timeout-ms = <105>;
-            key-positions = <31 64>;
+            key-positions = <31 56>;
             bindings = <&kp AMPS>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_star_by_r {
             timeout-ms = <105>;
-            key-positions = <32 64>;
+            key-positions = <32 56>;
             bindings = <&kp STAR>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_dollar_by_r {
             timeout-ms = <105>;
-            key-positions = <31 65>;
+            key-positions = <31 57>;
             bindings = <&kp DLLR>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
         combo_at_by_r {
             timeout-ms = <105>;
-            key-positions = <32 65>;
+            key-positions = <32 57>;
             bindings = <&kp AT>;
             layers = <FEAT_R FEAT_R_WIN>;
         };
@@ -858,7 +832,7 @@
         
         layer_mod {     
             bindings = <                
-                &none                    &bt_to_0                    &bt_to_1                   &bt_to_2                   &bt_to_3                     &bt_to_4                &none                                                                                                                                 &trans                    &bt_to_0             &bt_to_1                &bt_to_2                        &bt_to_3                  &bt_to_4                    &none
+                &none                    &bt_to 0 DEFAULT_WIN        &bt_to 1 DEFAULT_WIN       &bt_to 2 DEFAULT           &bt_to 3 DEFAULT             &bt_to 4 DEFAULT        &none                                                                                                                                 &trans                    &bt_to 0 DEFAULT_WIN &bt_to 1 DEFAULT_WIN    &bt_to 2 DEFAULT                &bt_to 3 DEFAULT          &bt_to 4 DEFAULT            &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &bootloader                                                                                                                           &bootloader               &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &none                      &none                        &none                   &rgb_ug RGB_MEFS_CMD 5       &bt BT_CLR               &bt BT_CLR_ALL                       &bt BT_CLR_ALL          &bt BT_CLR         &rgb_ug RGB_MEFS_CMD 5    &none                &none                   &none                           &none                     &none                       &none
                 &none                    &none                       &none                      &none                      &none                        &none                                                                         &none                                &none                                                                &none                &none                   &none                           &none                     &none                       &none
