@@ -530,7 +530,19 @@
             key-positions = <32 57>;
             bindings = <&kp AT>;
             layers = <FEAT_R FEAT_R_WIN>;
-        };             
+        }; 
+        alt_shift_bspc_win {
+            timeout-ms = <160>; /* same timeout of &hlt */
+            key-positions = <30 31 65>;
+            bindings = <&kp LA(LSHFT)>;
+            layers = <DEFAULT_WIN>;
+        }; 
+        alt_shift_win {
+            timeout-ms = <105>;
+            key-positions = <30 31>;
+            bindings = <&kp LA(LSHFT)>;
+            layers = <FEAT_L_WIN>;
+        };                             
     };
 
     behaviors {
@@ -808,11 +820,11 @@
             >;
         };
 
-        layer_alt_win { /* Triggered by lalt. LA(LEFT, RIGHT, UP, DOWN) -> LG(LEFT, RIGHT, UP, DOWN) */  
+        layer_alt_win { /* Triggered by lalt. LA(LEFT, RIGHT) -> LG(LEFT, RIGHT) */  
             bindings = <
                 &ht LA(PLUS) LA(EQUAL)   &ht LA(EXCL) LA(N1)         &ht LA(AT) LA(N2)          &ht LA(HASH) LA(N3)        &ht LA(DLLR) LA(N4)          &ht LA(PRCNT) LA(N5)    &to DEFAULT_WIN                                                                                                                             &mo MOD                   &ht LA(CARET) LA(N6) &ht LA(AMPS) LA(N7)     &ctrl_tripple_up                &ht LA(LPAR) LA(N9)       &ht LA(RPAR) LA(N0)         &ht LA(UNDERSCORE) LA(MINUS)
-                &kp LA(TAB)              &kp LA(Q)                   &kp LA(W)                  &kp LA(LC(A))              &kp LA(LC(GRAVE))            &kp LA(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                      &kp LA(LC(Q))             &auto_suggestion     &thick_arrow            &kp LC(UP)                      &thin_arrow               &ht_sq LA(RS(P)) LA(P)      &ht LA(RS(BSLH)) LA(BSLH)
-                &kp LA(CAPS)             &kp LA(LMETA)               &trans                     &kp LSHFT                  &kp LA(LCTRL)                &kp LA(LC(Z))           &kp LA(DEL)                  &kp LA(LMETA)            &kp LC(LS(R))                        &kp LCTRL               &kp LA(RMETA)            &ht_sleep_win 0 LA(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)            &kp LC(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LA(RS(SQT)) LA(SQT)
+                &kp LA(TAB)              &kp LA(Q)                   &kp LA(W)                  &kp LA(LC(A))              &kp LA(LC(GRAVE))            &kp LA(LC(LS(V)))       &to DEFAULT                                            /* LC(LS(P)) */                                                                      &kp LA(LC(Q))             &auto_suggestion     &thick_arrow            &kp LA(UP)                      &thin_arrow               &ht_sq LA(RS(P)) LA(P)      &ht LA(RS(BSLH)) LA(BSLH)
+                &kp LA(CAPS)             &kp LA(LMETA)               &trans                     &kp LSHFT                  &kp LA(LCTRL)                &kp LA(LC(Z))           &kp LA(DEL)                  &kp LA(LMETA)            &kp LC(LS(R))                        &kp LCTRL               &kp LA(RMETA)            &ht_sleep_win 0 LA(LC(W)) &ctrl_tripple_left   &kp LC(LEFT)            &kp LA(DOWN)                    &kp LC(RIGHT)             &ctrl_tripple_right         &ht LA(RS(SQT)) LA(SQT)
                 &kp LA(LSHFT)            &kp LA(LC(Z))               &kp LA(LC(X))              &ht_cp LA(LC(V)) LA(LC(C)) &alt_tab_win                 &kp LA(LC(LS(Z)))                                                             &kp LA(HOME)                         &iaesiiyw                                                                  &ht LA(RS(N)) LA(N)  &capsw_win              &ctrl_tripple_down              &thin_arrow               &ht LA(RS(FSLH)) LA(FSLH)   &kp LA(RSHFT)
                 &mo FN_WIN               &ht LA(LS(GRAVE)) LA(GRAVE) &kp LA(ENTER)              &kp LA(LC(C))              &kp LA(LC(V))                                        &trans                       &hlt NUM_WIN RALT        &kp LA(END)                          &kp LA(PG_DN)           &hlt NUM_WIN LA(ENTER)   &kp LA(SPACE)                                  &kp LA(TAB)             &none                           &ht LA(RS(LBKT)) LA(LBKT) &ht LA(RS(RBKT)) LA(RBKT)   &mo FN_WIN
             >;
