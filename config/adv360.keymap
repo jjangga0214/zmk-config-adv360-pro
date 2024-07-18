@@ -530,19 +530,7 @@
             key-positions = <32 57>;
             bindings = <&kp AT>;
             layers = <FEAT_R FEAT_R_WIN>;
-        }; 
-        alt_shift_bspc_win {
-            timeout-ms = <160>; /* same timeout of &hlt */
-            key-positions = <30 31 65>;
-            bindings = <&kp LA(LSHFT)>;
-            layers = <DEFAULT_WIN>;
-        }; 
-        alt_shift_win {
-            timeout-ms = <105>;
-            key-positions = <30 31>;
-            bindings = <&kp LA(LSHFT)>;
-            layers = <FEAT_L_WIN>;
-        };                             
+        };                   
     };
 
     behaviors {
@@ -772,8 +760,8 @@
  
         layer_default_win { 
             bindings = < 
-                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &to DEFAULT_WIN                                                                                                                             &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
-                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to DEFAULT                   /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */             &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
+                &ht PLUS EQUAL           &ht EXCL N1                 &ht AT N2                  &ht HASH N3                &ht DLLR N4                  &ht PRCNT N5            &kp LA(LSHFT)                                                                                                                               &mo MOD                   &ht CARET N6         &ht AMPS N7             &ht STAR N8                     &ht LPAR N9               &ht RPAR N0                 &ht UNDERSCORE MINUS
+                &kp TAB                  &kp Q                       &kp W                      &kp E                      &kp R                        &kp T                   &to LG(LS(SPACE))             /* LC(P) */              /* LC(LS(P)) */                                              /* LC(T) */             &kp LC(Q)                 &kp Y                &kp U                   &kp I                           &kp O                     &ht_sq RS(P) P              &ht RS(BSLH) BSLH
                 &kp CAPS                 &hmlt_pinky META_WIN A      &hm LALT S                 &hm_mid LSHFT D            &hmlt CTRL_WIN F             &kp G                   &kp DEL                      &kp LC(R)                &kp LC(LS(R))                        &kp LCTRL               &kp LC(F)                &ht_sleep_win 0 LC(W)     &kp H                &kp J                   &kp K                           &kp L                     &kp SEMI                    &ht RS(SQT) SQT
                 &kp LSHFT                &kp Z                       &kp X                      &kp C                      &kp V                        &kp B                                                                         &kp HOME                             &iaesiiyw                                                                  &kp N                &kp M                   &ht RS(COMMA) COMMA             &ht RS(DOT) DOT           &ht RS(FSLH) FSLH           &kp RSHFT
                 &mo FN_WIN               &ht LS(GRAVE) GRAVE         &kp ENTER                  &kp LC(C)                  &kp LC(V)                                            &hlt FEAT_L_WIN BSPC         &hlt NUM_WIN RALT        &kp LC(LS(E)) /* LC(LS(F)) */        &kp LC(E) /* LC(F) */   &hlt NUM_WIN ENTER       &hlt FEAT_R_WIN SPACE                          &kp TAB                 &none                           &ht RS(LBKT) LBKT         &ht RS(RBKT) RBKT           &mo FN
