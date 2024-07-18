@@ -68,13 +68,13 @@
             bindings
                 = <&macro_tap &kp SPACE &tog CAPSW>;
         };
-        uncapsw_esc_win: uncapsw_esc_win {
-            label = "uncapsw_esc_win";
+        uncapsw_spc_win: uncapsw_spc_win {
+            label = "uncapsw_spc_win";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap &kp ESC &tog CAPSW_WIN>;
-        };                      
+                = <&macro_tap &kp SPACE &tog CAPSW>;
+        };                          
         dqts: doublequotes {
             label = "doublequotes";
             compatible = "zmk,behavior-macro";
